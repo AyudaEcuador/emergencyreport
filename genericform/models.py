@@ -41,6 +41,7 @@ class GenericParentOption(models.Model):
         (3, 'VERDADERO/FALSO')
     )
     genericfield = models.ForeignKey(GenericField)
+    tipo =  models.IntegerField(choices=TIPO_CHOICES)
 
     def __unicode__(self):
         return str(self.id)
@@ -50,12 +51,7 @@ class GenericParentOption(models.Model):
 
 
 class GenericOption(models.Model):
-    TIPO_CHOICES = (
-        (1, 'NUMERICO'),
-        (2, 'TEXTO'),
-        (3, 'VERDADERO/FALSO')
-    )
-    genericfield = models.ForeignKey(GenericField)
+    genericparentoption = models.ForeignKey(GenericParentOption)
     nombre = models.CharField(max_length=15)
     valor = models.CharField(max_length=20,help_text='El valor del campo sera convertido')
 
