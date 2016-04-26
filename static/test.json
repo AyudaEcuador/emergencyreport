@@ -1,0 +1,7 @@
+{
+  "form_meta_data": {},
+  "fields": [
+    {"field_verbose_name":"Comentario", "field_type":"text",},
+    {"field_verbose_name":"Yes No", "field_type":"option", "options":[{"verbose":"----","values": "null"},{"verbose":"Si","values": "1"}] },
+  ]
+}
