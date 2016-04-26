@@ -7,23 +7,45 @@
     <script>
         Polymer({
             is: "dynamic-form",
+
             properties: {
                 metadata: {
-                    type: object,
+                    type: Object,
+                    value: function () {
+                        return [
+    {"field_verbose_name":"Comentario", "field_type":"text",},
+    {"field_verbose_name":"Yes No", "field_type":"option", "options":[{"verbose":"----","values": "null"},{"verbose":"Si","values": "1"}] },
+  ]
+                    }
+                },
+                fields: Array,
+                fieldsMapping: {
+                    type: Object,
                     value: function () {
                         return {
-                            'campo1':  {
-                                'nombre': 'Campo1',
-                                'ordinal': '1',
-                                'tipo': '1',
-                                'validation_dict': '{}'
-                            }
+                            'text': 'paper-input'
+                            //'options':
                         }
                     }
                 }
             },
 
+            generateForm: function (metadata) {
+                for(var i = 0; i < metadata.length; i++){
+                    var fieldType = field['field_type'];
+                    this.fields.push(
+                            document.createElement(this.fieldsMapping[fieldType])
+                    );
+                }
+            },
 
+            getFormMetaData: function () {
+                var formMetadataService = this.createElement('iron-ajax');
+                formMetadataService.url = 'test.json';
+                formMetadataService.handleAs = "json";
+                this.appendChild(formMetadataService);
+                formMetadataService.addEventListener('last-response-changed', this.generateForm.bind(this));
+            }
         })
     </script>
 </dom-module>
