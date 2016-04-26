@@ -2,57 +2,70 @@
 
 <dom-module id="dynamic-form">
     <template>
+        <style>
+            .form-card {
+                width: 100%;
+                padding: 16px 36px 46px 36px;
+            }
+        </style>
+        <paper-card heading="Reporte de necesidades" class="form-card">
+            <div class="card-content" id="formContent"></div>
 
+        </paper-card>
     </template>
     <script>
         Polymer({
             is: "dynamic-form",
 
             properties: {
-                metadata: {
-                    type: Object,
+                metadata: Object,
+                fields: {
+                    type: Array,
                     value: function () {
-                        return [
-    {"field_verbose_name":"Comentario", "field_type":"text",},
-    {"field_verbose_name":"Yes No", "field_type":"option", "options":[{"verbose":"----","values": "null"},{"verbose":"Si","values": "1"}] },
-  ]
+                        return [];
                     }
                 },
-                fields: Array,
                 fieldsMapping: {
                     type: Object,
                     value: function () {
                         return {
-                            'text': 'paper-input'
-                            //'options':
+                            'text': 'paper-input',
+                            'option': 'paper-dropdown-menu'
                         }
                     }
                 },
                 formMetadataService: Object
             },
 
-            factoryImpl: function () {
-                this.getFormMetaData();
+            ready: function () {
+                this.getFormMetadata();
             },
 
-            generateForm: function (event) {
-                //event
-                /*for(var i = 0; i < metadata.length; i++){
-                    var fieldType = field['field_type'];
-                    this.fields.push(
-                            document.createElement(this.fieldsMapping[fieldType])
-                    );
-                }*/
-                console.log(event);
-            },
-
-            getFormMetaData: function () {
+            getFormMetadata: function () {
                 this.formMetadataService = document.createElement('iron-ajax');
                 this.formMetadataService.url = '/test.json';
-                //this.formMetadataService.handleAs = "json";
+                this.formMetadataService.handleAs = "json";
                 this.appendChild(this.formMetadataService);
-                this.formMetadataService.addEventListener('last-response-changed', this.generateForm.bind(this));
+                this.formMetadataService.addEventListener(
+                        'response', this._setFormMetadata.bind(this));
                 this.formMetadataService.generateRequest();
+            },
+
+            _setFormMetadata: function (event) {
+                this.metadata = event.target.lastResponse;
+                this.generateFormFields();
+            },
+
+            generateFormFields: function () {
+                var fields = this.metadata['fields'];
+                for (var i = 0; i < fields.length; i++) {
+                    var field = fields[i];
+                    var dom_field = document.createElement(
+                            this.fieldsMapping[field['field_type']]);
+                    dom_field.label = field['field_verbose_name'];
+                    this.$$('#formContent').appendChild(dom_field);
+                    this.fields.push(dom_field);
+                }
             }
         })
     </script>
