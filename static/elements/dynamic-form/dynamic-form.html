@@ -8,8 +8,22 @@
         Polymer({
             is: "dynamic-form",
             properties: {
+                metadata: {
+                    type: object,
+                    value: function () {
+                        return {
+                            'campo1':  {
+                                'nombre': 'Campo1',
+                                'ordinal': '1',
+                                'tipo': '1',
+                                'validation_dict': '{}'
+                            }
+                        }
+                    }
+                }
+            },
 
-            }
+
         })
     </script>
 </dom-module>
