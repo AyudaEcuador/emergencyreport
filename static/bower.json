@@ -1,0 +1,25 @@
+{
+  "name": "emergencyreport",
+  "homepage": "https://github.com/desastre-ecuador/emergencyreport",
+  "authors": [
+    "andres <andres_anies@hotmail.com> carlos wikicarlos@gmail.com"
+  ],
+  "description": "Aplicación de gestión de reportes genericos para reportes logísticos",
+  "main": "",
+  "license": "Apache 2",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0",
+    "paper-toolbar": "PolymerElements/paper-toolbar#^1.1.4",
+    "paper-card": "PolymerElements/paper-card#^1.1.1",
+    "paper-button": "PolymerElements/paper-button#^1.0.11",
+    "iron-flex-layout": "polymerelements/iron-flex-layout#^1.3.1"
+  }
+}
