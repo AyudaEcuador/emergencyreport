@@ -27,24 +27,32 @@
                             //'options':
                         }
                     }
-                }
+                },
+                formMetadataService: Object
             },
 
-            generateForm: function (metadata) {
-                for(var i = 0; i < metadata.length; i++){
+            factoryImpl: function () {
+                this.getFormMetaData();
+            },
+
+            generateForm: function (event) {
+                //event
+                /*for(var i = 0; i < metadata.length; i++){
                     var fieldType = field['field_type'];
                     this.fields.push(
                             document.createElement(this.fieldsMapping[fieldType])
                     );
-                }
+                }*/
+                console.log(event);
             },
 
             getFormMetaData: function () {
-                var formMetadataService = this.createElement('iron-ajax');
-                formMetadataService.url = 'test.json';
-                formMetadataService.handleAs = "json";
-                this.appendChild(formMetadataService);
-                formMetadataService.addEventListener('last-response-changed', this.generateForm.bind(this));
+                this.formMetadataService = document.createElement('iron-ajax');
+                this.formMetadataService.url = '/test.json';
+                //this.formMetadataService.handleAs = "json";
+                this.appendChild(this.formMetadataService);
+                this.formMetadataService.addEventListener('last-response-changed', this.generateForm.bind(this));
+                this.formMetadataService.generateRequest();
             }
         })
     </script>
