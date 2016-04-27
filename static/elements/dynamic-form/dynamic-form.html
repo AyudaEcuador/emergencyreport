@@ -98,7 +98,9 @@
             },
 
             getSelectInput: function (field) {
-                var select_input = document.createElement(
+                var select_input = new selectElement(field['options'],field['field_verbose_name']);
+
+          /*      var select_input = document.createElement(
                         this.fieldsMappingTypes[field['field_type']]);
                 select_input.label = field['field_verbose_name'];
 
@@ -114,7 +116,7 @@
                     listbox.appendChild(item);
                 }
 
-                select_input.appendChild(listbox);
+                select_input.appendChild(listbox);*/
                 return select_input;
             }
         })

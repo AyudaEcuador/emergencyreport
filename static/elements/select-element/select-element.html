@@ -1,0 +1,49 @@
+<!-- Select element -->
+<dom-module id="select-element">
+
+    <style is="custom-style">
+        .container {
+            @apply(--layout-vertical-reverse);
+            padding-bottom: 5%;
+            display: block !important;
+        }
+
+        .flexchild {
+            @apply(--layout-flex);
+        }
+
+    </style>
+    <template>
+        <div class="container">
+            <paper-dropdown-menu class="flexchild " label="[[label]]" id="dropdownpaper" required="[[required]]"
+                                 error-message="[[errorMessage]]">
+                <paper-menu class="dropdown-content" id="papermenu">
+                    <template is="dom-repeat" items="{{ list }}" id="tmpList">
+                        <paper-item id='{{ item.value }}'>{{ item.verbose }}</paper-item>
+                    </template>
+                </paper-menu>
+            </paper-dropdown-menu>
+        </div>
+    </template>
+
+    <script>
+        (function () {
+
+            selectElement = Polymer({
+                is: 'select-element',
+
+                properties: {
+                    list: Object,
+                    label: String,
+                },
+
+                factoryImpl: function (list,label) {
+                    this.list = list;
+                    this.label = label;
+                }
+            });
+        })();
+
+    </script>
+
+</dom-module>
