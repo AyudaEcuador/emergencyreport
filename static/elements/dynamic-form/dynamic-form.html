@@ -9,8 +9,15 @@
             }
         </style>
         <paper-card heading="Reporte de necesidades" class="form-card">
-            <div class="card-content" id="formContent"></div>
+            <div class="card-content"></div>
+            <form is="iron-form"
+                  id="reportForm"
+                  method="post"
+                  action="/por_definir/"
+                  content-type="application/json"
+                  disableNativeValidationUi>
 
+            </form>
         </paper-card>
     </template>
     <script>
@@ -25,7 +32,17 @@
                         return [];
                     }
                 },
-                fieldsMapping: {
+                fieldsMappingGenerators: {
+                    type: Object,
+                    value: function () {
+                        return {
+                            'text': 'getTextInput',
+                            'option': 'getSelectInput'
+                        }
+                    }
+                },
+
+                fieldsMappingTypes: {
                     type: Object,
                     value: function () {
                         return {
@@ -34,6 +51,7 @@
                         }
                     }
                 },
+
                 formMetadataService: Object
             },
 
@@ -60,12 +78,44 @@
                 var fields = this.metadata['fields'];
                 for (var i = 0; i < fields.length; i++) {
                     var field = fields[i];
-                    var dom_field = document.createElement(
-                            this.fieldsMapping[field['field_type']]);
-                    dom_field.label = field['field_verbose_name'];
-                    this.$$('#formContent').appendChild(dom_field);
+                    var dom_field = this.getDomElementFromField(field);
+                    this.$$('#reportForm').appendChild(dom_field);
                     this.fields.push(dom_field);
                 }
+            },
+
+            getDomElementFromField: function (field) {
+                var generator = this.fieldsMappingGenerators[field['field_type']];
+                return this[generator](field);
+            },
+
+            getTextInput: function (field) {
+                var text_input = document.createElement(
+                        this.fieldsMappingTypes[field['field_type']]);
+                text_input.label = field['field_verbose_name'];
+
+                return text_input;
+            },
+
+            getSelectInput: function (field) {
+                var select_input = document.createElement(
+                        this.fieldsMappingTypes[field['field_type']]);
+                select_input.label = field['field_verbose_name'];
+
+                var listbox = document.createElement('paper-listbox');
+                listbox.setAttribute('class', 'dropdown-content');
+
+                var options = field['options'];
+                for (var i = 0; i < options.length; i++) {
+                    var item = document.createElement('paper-item');
+                    item.textContent = options[i]['verbose'];
+                    item.id = options[i]['value'];
+
+                    listbox.appendChild(item);
+                }
+
+                select_input.appendChild(listbox);
+                return select_input;
             }
         })
     </script>
