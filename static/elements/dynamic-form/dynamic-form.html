@@ -3,9 +3,56 @@
 <dom-module id="dynamic-form">
     <template>
         <style>
+            .buttons {
+                padding-left: 36px;
+            }
+
             .form-card {
                 width: 100%;
                 padding: 16px 36px 46px 36px;
+                --paper-card-header-color: #2196F3;
+                --paper-card-header: {
+                    padding-left: 10px;
+                };
+                --paper-card-header-text:{
+                    text-align: center;
+                }
+
+            }
+
+            paper-button {
+                padding: 5px;
+                font-size: 16px;
+                margin-top: 2%;
+                margin-bottom: 5%;
+                border-radius: 10%;
+            }
+
+            #toastResponse {
+                position: absolute;
+            }
+
+            .dismiss {
+                background-color: #D32F2F;
+                color: #fff
+            }
+
+            .dismiss:hover {
+                background-color: #F44336;
+            }
+
+            .acept {
+                background-color: #689F38;
+                color: #fff;
+
+            }
+
+            .acept:hover {
+                background-color: #8BC34A;
+            }
+
+            .flexchild {
+                @apply(--layout-flex);
             }
         </style>
         <paper-card heading="Reporte de necesidades" class="form-card">
@@ -16,8 +63,12 @@
                   action="/por_definir/"
                   content-type="application/json"
                   disableNativeValidationUi>
-
             </form>
+            <footer class="buttons horizontal layout end flexchild">
+                <paper-toast id="toastResponse" duration="30000"></paper-toast>
+                <paper-button id="dismiss" class="dismiss" on-click="_closeHandler">Cancelar</paper-button>
+                <paper-button id="confirm" class="acept" on-click="_confirmHandler">Aceptar</paper-button>
+            </footer>
         </paper-card>
     </template>
     <script>
@@ -94,32 +145,52 @@
                 var text_input = document.createElement(
                         this.fieldsMappingTypes[field['field_type']]);
                 text_input.label = field['field_verbose_name'];
+                text_input.required = field['required'];
+                text_input.errorMessage = field['field_error_message'];
 
                 return text_input;
             },
 
             getSelectInput: function (field) {
-                var select_input = new selectElement(field['options'],field['field_verbose_name']);
+                var select_input = new selectElement(field['options'], field['field_verbose_name']);
+                select_input.required = field['required'];
+                select_input.errorMessage = field['field_error_message'];
 
-          /*      var select_input = document.createElement(
-                        this.fieldsMappingTypes[field['field_type']]);
-                select_input.label = field['field_verbose_name'];
+                /*      var select_input = document.createElement(
+                 this.fieldsMappingTypes[field['field_type']]);
+                 select_input.label = field['field_verbose_name'];
 
-                var listbox = document.createElement('paper-listbox');
-                listbox.setAttribute('class', 'dropdown-content');
+                 var listbox = document.createElement('paper-listbox');
+                 listbox.setAttribute('class', 'dropdown-content');
 
-                var options = field['options'];
-                for (var i = 0; i < options.length; i++) {
-                    var item = document.createElement('paper-item');
-                    item.textContent = options[i]['verbose'];
-                    item.id = options[i]['value'];
+                 var options = field['options'];
+                 for (var i = 0; i < options.length; i++) {
+                 var item = document.createElement('paper-item');
+                 item.textContent = options[i]['verbose'];
+                 item.id = options[i]['value'];
 
-                    listbox.appendChild(item);
-                }
+                 listbox.appendChild(item);
+                 }
 
-                select_input.appendChild(listbox);*/
+                 select_input.appendChild(listbox);*/
                 return select_input;
+            },
+
+            _confirmHandler: function () {
+                (this.$.reportForm.validate()) ? this.showValue() : this.showError();
+            },
+
+            showValue: function () {
+                this.$.toastResponse.text = 'Correcto';
+                this.$.toastResponse.show();
+            },
+
+            showError: function () {
+                this.$.toastResponse.text = 'Incorrecto';
+                this.$.toastResponse.show();
             }
+
+
         })
     </script>
 </dom-module>

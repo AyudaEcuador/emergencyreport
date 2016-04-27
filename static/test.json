@@ -4,12 +4,16 @@
     {
       "field_verbose_name": "Comentario",
       "field_type": "text",
-      "help": "escriba un comentario corto"
+      "field_error_message": "Es necesario el comentario",
+      "help": "escriba un comentario corto",
+      "required": true
     },
     {
       "field_verbose_name": "Yes No",
       "field_type": "option",
+      "field_error_message": "Es obligatorio escoger una opción",
       "help": "seleccione una opción",
+      "required": "true",
       "options": [
         {
           "verbose": "----",
