@@ -3,11 +3,13 @@
   "fields": [
     {
       "field_verbose_name": "Comentario",
-      "field_type": "text"
+      "field_type": "text",
+      "help": "escriba un comentario corto"
     },
     {
       "field_verbose_name": "Yes No",
       "field_type": "option",
+      "help": "seleccione una opción",
       "options": [
         {
           "verbose": "----",

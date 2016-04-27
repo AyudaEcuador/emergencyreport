@@ -79,7 +79,8 @@
                 for (var i = 0; i < fields.length; i++) {
                     var field = fields[i];
                     var dom_field = this.getDomElementFromField(field);
-                    this.$$('#reportForm').appendChild(dom_field);
+                    var container = new elementContainer(dom_field, field['help']);
+                    this.$$('#reportForm').appendChild(container);
                     this.fields.push(dom_field);
                 }
             },

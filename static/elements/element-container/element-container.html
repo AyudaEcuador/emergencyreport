@@ -1,0 +1,66 @@
+<!-- element-container element, this element is going to be filled with any dynamic element-->
+<dom-module id="element-container">
+
+    <style is="custom-style">
+        .container {
+            @apply(--layout-horizontal);
+            width: 100%;
+            padding-left: 5%;
+        }
+
+        .flexchild {
+            @apply(--layout-flex);
+        }
+
+        #helper {
+            margin-top: 3%;
+            margin-right: 5%;
+        }
+
+        #helper-icon{
+            --iron-icon-fill-color: #FF9800;
+        }
+
+        #contentSection {
+            width: 95%;
+        }
+
+        .tooltip {
+            box-sizing: border-box;
+            height: 100%;
+            padding: 8px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+    <template>
+        <section class="container">
+            <section class="flexchild" id="contentSection">
+            </section>
+            <section class="flexchild horizontal layout" id="helper">
+                <iron-icon id="helper-icon" icon="icons:help"></iron-icon>
+                <paper-tooltip class="tooltip" for="helper" offset="0">{{ message }}</paper-tooltip>
+            </section>
+        </section>
+    </template>
+    <script>
+        (function () {
+            elementContainer = Polymer({
+                is: 'element-container',
+                //attributes that the element-container element has
+                properties: {
+                    message: String,
+                },
+
+                factoryImpl: function (element, message) {
+                    this.message = message;
+                    this.$$('#contentSection').appendChild(element);
+
+                }
+
+            });
+        })();
+
+    </script>
+
+</dom-module>
