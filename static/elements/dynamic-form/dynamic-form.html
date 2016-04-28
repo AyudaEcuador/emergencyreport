@@ -97,43 +97,50 @@
                     type: Object,
                     value: function () {
                         return {
-                            'SOLONUMEROSENTEROS': {
+                            'TEXTO_SOLO_NUMEROS_ENTEROS': {
                                 'widget': 'paper-input',
                                 'allowedPattern': '^[0-9]*$',
+                                'pattern': '',
                                 'defaultError': 'Solo se permite el ingreso de números enteros'
                             },
 
-                            'SOLODECIMALES': {
+                            'TEXTO_SOLO_DECIMALES': {
                                 'widget': 'paper-input',
                                 'allowedPattern': '^[0-9]+(\.[0-9]{1,2})?$',
+                                'pattern': '',
                                 'defaultError': 'Solo se permite el ingreso de numeros con dos decimales'
                             },
 
 
-                            'SOLOLETRAS': {
+                            'TEXTO_SOLO_LETRAS': {
                                 'widget': 'paper-input',
                                 'allowedPattern': '^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ]*$',
+                                'pattern': '',
                                 'defaultError': 'Solo se permite el ingreso de letras'
                             },
 
-                            'SOLOLETRASYNUMEROS': {
+                            'TEXTO_SOLO_LETRAS_Y_NUMEROS': {
                                 'widget': 'paper-input',
                                 'allowedPattern': '^[0-9a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]*$',
+                                'pattern': '',
                                 'defaultError': 'Solo se permite el ingreso de letras y numeros'
                             },
-                            'SOLOLETRASCONESPACIOS': {
+                            'TEXTO_SOLO_LETRAS_CON_ESPACIOS': {
                                 'widget': 'paper-input',
                                 'allowedPattern': '^[a-zA-Z áéíóúÁÉÍÓÚñÑüÜ\s]*$',
+                                'pattern': '',
                                 'defaultError': 'Solo se permite el ingreso de letras y espacios'
                             },
-                            'SOLOLETRASYNUMEROSCONESPACIOS': {
+                            'TEXTO_SOLO_LETRAS_Y_NUMEROS_CON_ESPACIOS': {
                                 'widget': 'paper-input',
                                 'allowedPattern': '^[0-9a-zA-Z áéíóúÁÉÍÓÚñÑüÜ\s]*$',
+                                'pattern': '',
                                 'defaultError': 'Solo se permite el ingreso de letras, números y espacios'
                             },
-                            'SOLOLETRASYNUMEROSCONESPACIOSYSIMBOLOS': {
+                            'TEXTO_SOLO_LETRAS_Y_NUMEROS_CON_ESPACIOS_Y_SIMBOLOS': {
                                 'widget': 'paper-input',
                                 'allowedPattern': '^[a-zA-Z0-9 áéíóúÁÉÍÓÚñÑüÜ\%\$\#\@\!\?\¿\(\)\&\/\\\[\]\*\,\.\:\s]*$',
+                                'pattern': '',
                                 'defaultError': 'Solo se permite el ingreso de letras, numeros, espacios y símbolos'
                             },
 

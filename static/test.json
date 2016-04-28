@@ -2,31 +2,31 @@
   "form_meta_data": {},
   "fields": [
     {
-      "field_verbose_name": "Comentario:",
-      "field_type": "text",
-      "field_error_message": "Es necesario el comentario",
-      "help": "escriba un comentario corto",
-      "allowed_pattern": "^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ]*$",
-      "pattern":"^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ]*$",
-      "required": true
+      "verbose_name": "Comentario:",
+      "type": "TEXTO_SOLO_NUMEROS_ENTEROS",
+      "help_text": "escriba un comentario corto",
+      "required": true,
+      "read_only": false
 
     },
     {
-      "field_verbose_name": "Select:",
-      "field_type": "option",
-      "field_error_message": "Es obligatorio escoger una opción",
-      "help": "seleccione una opción",
-      "required": "true",
-      "options": [
+      "verbose_name": "Select:",
+      "type": "option",
+      "help_text": "seleccione una opción",
+      "required": true,
+      "read_only": false,
+      "choices": [
         {
-          "verbose": "No",
+          "label": "No",
           "value": null
         },
         {
-          "verbose": "Si",
+          "label": "Si",
           "value": "1"
         }
       ]
     }
   ]
 }
+
+//TODO: agregar validacion por campo y mensaje de error en metadata
