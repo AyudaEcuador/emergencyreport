@@ -14,7 +14,7 @@
       "help_text": "seleccione una opción",
       "required": true,
       "read_only": false,
-      "choices": [
+      "options": [
         {
           "label": "No",
           "value": null

@@ -167,7 +167,7 @@
 
             getFormMetadata: function () {
                 this.formMetadataService = document.createElement('iron-ajax');
-                this.formMetadataService.url = '/test.json';
+                this.formMetadataService.url = '/api-forms/metadata/1?format=json';
                 this.formMetadataService.handleAs = 'json';
                 this.appendChild(this.formMetadataService);
                 this.formMetadataService.addEventListener(

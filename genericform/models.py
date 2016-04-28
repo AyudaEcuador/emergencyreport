@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class GenericForm(models.Model):
     nombre_corto = models.CharField(max_length=150)
@@ -17,31 +18,44 @@ class GenericForm(models.Model):
 
 class GenericField(models.Model):
     TIPO_CHOICES = (
-        (1, 'NUMERICO'),
-        (2, 'TEXTO'),
-        (3, 'SELECCIONABLE_TEXTO'),
+        (1, 'TEXTO_SOLO_NUMEROS_ENTEROS'),
+        (2, 'TEXTO_SOLO_DECIMALES'),
+        (3, 'TEXTO_SOLO_LETRAS'),
+        (4, 'TEXTO_SOLO_LETRAS_Y_NUMEROS'),
+        (5, 'TEXTO_SOLO_LETRAS_CON_ESPACIOS'),
+        (6, 'TEXTO_SOLO_LETRAS_Y_NUMEROS_CON_ESPACIOS'),
+        (7, 'TEXTO_SOLO_LETRAS_Y_NUMEROS_CON_ESPACIOS_Y_SIMBOLOS'),
+        (8, 'SELECCIONABLE_TEXTO'),
     )
 
-    genericform = models.ForeignKey(GenericForm)
-    nombre =  models.CharField(max_length=20)
+    genericform = models.ForeignKey(GenericForm, related_name='fields')
+    verbose_name = models.CharField(max_length=20)
     ordinal = models.IntegerField()
-    tipo = models.IntegerField(choices=TIPO_CHOICES)
+    type = models.IntegerField(choices=TIPO_CHOICES)
+    help_text = models.CharField(max_length=128)
+    required = models.BooleanField()
+    read_only = models.BooleanField()
     validation_dict = models.TextField()
 
     def __unicode__(self):
-        return str(self.nombre)
+        return str(self.verbose_name)
+
+    @property
+    def options(self):
+        if self.options_type:
+            return self.options_type.options
 
     class Meta:
         pass
+
 
 class GenericParentOption(models.Model):
     TIPO_CHOICES = (
         (1, 'NUMERICO'),
         (2, 'TEXTO'),
-        (3, 'VERDADERO/FALSO')
     )
-    genericfield = models.ForeignKey(GenericField)
-    tipo =  models.IntegerField(choices=TIPO_CHOICES)
+    genericfield = models.OneToOneField(GenericField, related_name='options_type')
+    tipo = models.IntegerField(choices=TIPO_CHOICES)
 
     def __unicode__(self):
         return str(self.id)
@@ -51,9 +65,9 @@ class GenericParentOption(models.Model):
 
 
 class GenericOption(models.Model):
-    genericparentoption = models.ForeignKey(GenericParentOption)
-    nombre = models.CharField(max_length=15)
-    valor = models.CharField(max_length=20,help_text='El valor del campo sera convertido')
+    genericparentoption = models.ForeignKey(GenericParentOption, related_name='options')
+    label = models.CharField(max_length=15)
+    value = models.CharField(max_length=20, help_text='El valor del campo sera convertido')
 
     def __unicode__(self):
         return str(self.id)
