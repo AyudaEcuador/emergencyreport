@@ -4,8 +4,11 @@
     <style is="custom-style">
         .container {
             @apply(--layout-horizontal);
-            width: 100%;
             padding-left: 5%;
+            border: solid 1px;
+            border-radius: 5px;
+            margin-bottom: 1%;
+            padding-bottom: 2%;
         }
 
         .flexchild {
@@ -34,7 +37,7 @@
         }
     </style>
     <template>
-        <section class="container">
+            <section class="container">
             <section class="flexchild" id="contentSection">
             </section>
             <section class="flexchild horizontal layout" id="helper">

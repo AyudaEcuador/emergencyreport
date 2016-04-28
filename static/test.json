@@ -2,21 +2,24 @@
   "form_meta_data": {},
   "fields": [
     {
-      "field_verbose_name": "Comentario",
+      "field_verbose_name": "Comentario:",
       "field_type": "text",
       "field_error_message": "Es necesario el comentario",
       "help": "escriba un comentario corto",
+      "allowed_pattern": "^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ]*$",
+      "pattern":"^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ]*$",
       "required": true
+
     },
     {
-      "field_verbose_name": "Yes No",
+      "field_verbose_name": "Select:",
       "field_type": "option",
       "field_error_message": "Es obligatorio escoger una opción",
       "help": "seleccione una opción",
       "required": "true",
       "options": [
         {
-          "verbose": "----",
+          "verbose": "No",
           "value": null
         },
         {
