@@ -1,9 +1,22 @@
 {
   "form_meta_data": {},
+  "headers": [
+    {
+      "label":"Número de Formulario",
+      "value":"E-51"
+    },
+
+    {
+      "label":"Número de Mesa",
+      "value":"M-48"
+    }
+  ],
+
   "fields": [
+
     {
       "verbose_name": "Comentario:",
-      "type": "TEXTO_SOLO_NUMEROS_ENTEROS",
+      "type": "TEXTO_EMAIL",
       "help_text": "escriba un comentario corto",
       "required": true,
       "read_only": false
