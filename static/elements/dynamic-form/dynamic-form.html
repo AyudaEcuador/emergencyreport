@@ -14,7 +14,7 @@
                 --paper-card-header: {
                     padding-left: 10px;
                 };
-                --paper-card-header-text:{
+                --paper-card-header-text: {
                     text-align: center;
                 }
 
@@ -66,7 +66,7 @@
             </form>
             <footer class="buttons horizontal layout end flexchild">
                 <paper-toast id="toastResponse" duration="30000"></paper-toast>
-             <!--   <paper-button id="dismiss" class="dismiss" on-click="_closeHandler">Cancelar</paper-button>-->
+                <paper-button id="dismiss" class="dismiss" on-click="_closeHandler">Cancelar</paper-button>
                 <paper-button id="confirm" class="acept" on-click="_confirmHandler">Aceptar</paper-button>
             </footer>
         </paper-card>
@@ -87,8 +87,14 @@
                     type: Object,
                     value: function () {
                         return {
-                            'text': 'getTextInput',
-                            'option': 'getSelectInput'
+                            'TEXTO_SOLO_NUMEROS_ENTEROS': 'getTextInput',
+                            'TEXTO_SOLO_DECIMALES': 'getTextInput',
+                            'TEXTO_SOLO_LETRAS': 'getTextInput',
+                            'TEXTO_SOLO_LETRAS_Y_NUMEROS': 'getTextInput',
+                            'TEXTO_SOLO_LETRAS_CON_ESPACIOS': 'getTextInput',
+                            'TEXTO_SOLO_LETRAS_Y_NUMEROS_CON_ESPACIOS': 'getTextInput',
+                            'TEXTO_SOLO_LETRAS_Y_NUMEROS_CON_ESPACIOS_Y_SIMBOLOS': 'getTextInput',
+                            'SELECCIONABLE_TEXTO': 'getSelectInput'
                         }
                     }
                 },
@@ -109,8 +115,8 @@
                                 'allowedPattern': '^[0-9]+(\.[0-9]{1,2})?$',
                                 'pattern': '',
                                 'defaultError': 'Solo se permite el ingreso de numeros con dos decimales'
-                            },
 
+                            },
 
                             'TEXTO_SOLO_LETRAS': {
                                 'widget': 'paper-input',
@@ -145,7 +151,8 @@
                             },
 
                             'SELECCIONABLE_TEXTO': {
-                                'widget': 'paper-dropdown-menu'
+                                'widget': 'paper-dropdown-menu',
+                                'defaultError': 'Seleccione una opción'
                             }
                         }
                     }
@@ -178,34 +185,35 @@
                 for (var i = 0; i < fields.length; i++) {
                     var field = fields[i];
                     var dom_field = this.getDomElementFromField(field);
-                    var container = new elementContainer(dom_field, field['help']);
+                    var container = new elementContainer(dom_field, field['help_text']);
                     this.$$('#reportForm').appendChild(container);
                     this.fields.push(dom_field);
                 }
             },
 
             getDomElementFromField: function (field) {
-                var generator = this.fieldsMappingGenerators[field['field_type']];
+                var generator = this.fieldsMappingGenerators[field['type']];
                 return this[generator](field);
             },
 
             getTextInput: function (field) {
-                var text_input = document.createElement(
-                        this.fieldsMappingTypes[field['field_type']]);
-                text_input.label = field['field_verbose_name'];
+                var fieldType = this.fieldsMappingTypes[field['type']];
+                var text_input = document.createElement(fieldType['widget']);
+                text_input.label = field['verbose_name'];
                 text_input.required = field['required'];
-                text_input.errorMessage = field['field_error_message'];
+                text_input.errorMessage = fieldType['defaultError'];
                 text_input.placeholder = '     ';
-                text_input.allowedPattern = field['allowed_pattern'];
-                text_input.pattern = field['pattern'];
-                text_input.autoValidate = true;
+                text_input.allowedPattern = fieldType['allowedPattern'];
+                text_input.pattern = fieldType['pattern'];
+                text_input.autoValidate = fieldType['allowedPattern'] != undefined;
                 return text_input;
             },
 
             getSelectInput: function (field) {
-                var select_input = new selectElement(field['options'], field['field_verbose_name']);
+                var fieldType = this.fieldsMappingTypes[field['type']];
+                var select_input = new selectElement(field['choices'], field['verbose_name']);
                 select_input.required = field['required'];
-                select_input.errorMessage = field['field_error_message'];
+                select_input.errorMessage = fieldType['defaultError'];
 
                 return select_input;
             },
@@ -217,7 +225,8 @@
             showValue: function () {
                 this.$.toastResponse.text = 'Correcto';
                 this.$.toastResponse.show();
-            }
+            },
+
         })
     </script>
 </dom-module>

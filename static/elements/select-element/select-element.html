@@ -19,7 +19,7 @@
                                  error-message="[[errorMessage]]" placeholder="   " auto-validate>
                 <paper-menu class="dropdown-content" id="papermenu">
                     <template is="dom-repeat" items="{{ list }}" id="tmpList">
-                        <paper-item id='{{ item.value }}'>{{ item.verbose }}</paper-item>
+                        <paper-item id='{{ item.value }}'>{{ item.label }}</paper-item>
                     </template>
                 </paper-menu>
             </paper-dropdown-menu>

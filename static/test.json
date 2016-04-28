@@ -7,11 +7,10 @@
       "help_text": "escriba un comentario corto",
       "required": true,
       "read_only": false
-
     },
     {
       "verbose_name": "Select:",
-      "type": "option",
+      "type": "SELECCIONABLE_TEXTO",
       "help_text": "seleccione una opción",
       "required": true,
       "read_only": false,
@@ -28,5 +27,3 @@
     }
   ]
 }
-
-//TODO: agregar validacion por campo y mensaje de error en metadata
