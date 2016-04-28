@@ -97,8 +97,49 @@
                     type: Object,
                     value: function () {
                         return {
-                            'text': 'paper-input',
-                            'option': 'paper-dropdown-menu'
+                            'SOLONUMEROSENTEROS': {
+                                'widget': 'paper-input',
+                                'allowedPattern': '^[0-9]*$',
+                                'defaultError': 'Solo se permite el ingreso de números enteros'
+                            },
+
+                            'SOLODECIMALES': {
+                                'widget': 'paper-input',
+                                'allowedPattern': '^[0-9]+(\.[0-9]{1,2})?$',
+                                'defaultError': 'Solo se permite el ingreso de numeros con dos decimales'
+                            },
+
+
+                            'SOLOLETRAS': {
+                                'widget': 'paper-input',
+                                'allowedPattern': '^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ]*$',
+                                'defaultError': 'Solo se permite el ingreso de letras'
+                            },
+
+                            'SOLOLETRASYNUMEROS': {
+                                'widget': 'paper-input',
+                                'allowedPattern': '^[0-9a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]*$',
+                                'defaultError': 'Solo se permite el ingreso de letras y numeros'
+                            },
+                            'SOLOLETRASCONESPACIOS': {
+                                'widget': 'paper-input',
+                                'allowedPattern': '^[a-zA-Z áéíóúÁÉÍÓÚñÑüÜ\s]*$',
+                                'defaultError': 'Solo se permite el ingreso de letras y espacios'
+                            },
+                            'SOLOLETRASYNUMEROSCONESPACIOS': {
+                                'widget': 'paper-input',
+                                'allowedPattern': '^[0-9a-zA-Z áéíóúÁÉÍÓÚñÑüÜ\s]*$',
+                                'defaultError': 'Solo se permite el ingreso de letras, números y espacios'
+                            },
+                            'SOLOLETRASYNUMEROSCONESPACIOSYSIMBOLOS': {
+                                'widget': 'paper-input',
+                                'allowedPattern': '^[a-zA-Z0-9 áéíóúÁÉÍÓÚñÑüÜ\%\$\#\@\!\?\¿\(\)\&\/\\\[\]\*\,\.\:\s]*$',
+                                'defaultError': 'Solo se permite el ingreso de letras, numeros, espacios y símbolos'
+                            },
+
+                            'SELECCIONABLE_TEXTO': {
+                                'widget': 'paper-dropdown-menu'
+                            }
                         }
                     }
                 },
@@ -113,7 +154,7 @@
             getFormMetadata: function () {
                 this.formMetadataService = document.createElement('iron-ajax');
                 this.formMetadataService.url = '/test.json';
-                this.formMetadataService.handleAs = "json";
+                this.formMetadataService.handleAs = 'json';
                 this.appendChild(this.formMetadataService);
                 this.formMetadataService.addEventListener(
                         'response', this._setFormMetadata.bind(this));
