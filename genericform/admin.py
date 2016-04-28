@@ -1,23 +1,23 @@
 from django.contrib import admin
-from genericform.models import GenericForm, GenericField, GenericParentOption, GenericOption
+from . import models
 from nested_inline.admin import NestedStackedInline, NestedModelAdmin
 
 
 # Register your models here.
 
 class GenericOptionInline(NestedStackedInline):
-    model = GenericOption
+    model = models.GenericOption
     extra = 1
 
 
 class GenericParentOptionInline(NestedStackedInline):
-    model = GenericParentOption
+    model = models.GenericParentOption
     extra = 0
     inlines = [GenericOptionInline]
 
 
 class GenericFieldInline(NestedStackedInline):
-    model = GenericField
+    model = models.GenericField
     extra = 1
     inlines = [GenericParentOptionInline]
 
@@ -26,25 +26,32 @@ class GenericFormAdmin(NestedModelAdmin):
     inlines = [GenericFieldInline]
 
 
-admin.site.register(GenericForm, GenericFormAdmin)
+admin.site.register(models.GenericForm, GenericFormAdmin)
 
 
 class GenericFieldAdmin(admin.ModelAdmin):
     pass
 
 
-admin.site.register(GenericField, GenericFieldAdmin)
+admin.site.register(models.GenericField, GenericFieldAdmin)
 
 
 class GenericParentOptionAdmin(admin.ModelAdmin):
     pass
 
 
-admin.site.register(GenericParentOption, GenericParentOptionAdmin)
+admin.site.register(models.GenericParentOption, GenericParentOptionAdmin)
 
 
 class GenericOptionAdmin(admin.ModelAdmin):
     pass
 
 
-admin.site.register(GenericOption, GenericOptionAdmin)
+admin.site.register(models.GenericOption, GenericOptionAdmin)
+
+
+class GenericFormDataAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(models.GenericFormData, GenericFormDataAdmin)

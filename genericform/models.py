@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.postgres.fields import JSONField
 
 
 # Create your models here.
@@ -38,7 +39,7 @@ class GenericField(models.Model):
     validation_dict = models.TextField()
 
     def __unicode__(self):
-        return str(self.verbose_name)
+        return unicode(self.verbose_name)
 
     @property
     def options(self):
@@ -74,3 +75,12 @@ class GenericOption(models.Model):
 
     class Meta:
         pass
+
+
+class GenericFormData(models.Model):
+    form = models.ForeignKey(GenericForm)
+    data = models.TextField()
+
+    def __unicode__(self):
+        return str(self.id)
+
