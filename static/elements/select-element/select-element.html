@@ -20,7 +20,7 @@
     <template>
         <div class="container">
             <paper-dropdown-menu class="flexchild " label="[[label]]" id="dropdownpaper" required="[[required]]"
-                                 error-message="[[errorMessage]]" placeholder="   " auto-validate>
+                                 error-message="[[errorMessage]]" placeholder="   " auto-validate name="[[label]]">
                 <paper-menu class="dropdown-content" id="papermenu">
                     <template is="dom-repeat" items="{{ list }}" id="tmpList">
                         <paper-item id='{{ item.value }}'>{{ item.label }}</paper-item>

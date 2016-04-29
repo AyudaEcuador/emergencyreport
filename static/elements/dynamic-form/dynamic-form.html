@@ -113,7 +113,7 @@
             <form is="iron-form"
                   id="reportForm"
                   method="post"
-                  action="/por_definir/"
+                  action="/api-forms/forms/1"
                   content-type="application/json"
                   disableNativeValidationUi>
             </form>
@@ -127,6 +127,10 @@
     <script>
         Polymer({
             is: "dynamic-form",
+
+            listeners: {
+                'iron-form-presubmit': 'setupRequest'
+            },
 
             properties: {
                 metadata: Object,
@@ -283,6 +287,7 @@
                 var fieldType = this.fieldsMappingTypes[field['type']];
                 var text_input = document.createElement(fieldType['widget']);
                 text_input.label = field['verbose_name'];
+                text_input.name = field['verbose_name'];
                 text_input.required = field['required'];
                 text_input.errorMessage = fieldType['defaultError'];
                 text_input.placeholder = '     ';
@@ -306,7 +311,12 @@
             },
 
             _confirmHandler: function () {
-                (this.$.reportForm.validate()) ? this.showValue() : this.showError();
+                if (this.$.reportForm.validate()) {
+                    this.showValue();
+                    this.$$('#reportForm').submit()
+                } else {
+                    this.showError();
+                }
             },
 
             _validatePattern: function (event) {
@@ -350,6 +360,13 @@
                     alert(" numeral encontrado");
                 }
 
+            },
+
+            setupRequest: function () {
+                var csrftoken = document.cookie.match('(^|;)\\s*csrftoken\\s*=\\s*([^;]+)');
+                this.$$('#reportForm').request.headers = {
+                    'X-CSRFToken':  csrftoken ? csrftoken.pop() : ''
+                };
             }
 
         })
