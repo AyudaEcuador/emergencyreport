@@ -1,1 +1,535 @@
-[{"model": "genericform.genericform", "pk": 1, "fields": {"nombre_corto": "GRUPO ETARIO", "mesa": 4, "ordinal": 1, "hora_entrega": "09:00:00", "descripcion": "REPORTE DE POBLACION GRUPO ETARIO"}}, {"model": "genericform.genericform", "pk": 2, "fields": {"nombre_corto": "REQUERIMIETOS DIARIOS EN EL ALBERGUE", "mesa": 4, "ordinal": 2, "hora_entrega": "16:00:00", "descripcion": "REPORTE DE REQUERIMIENTOS DIARIOS EN EL ALBERGUE"}}, {"model": "genericform.genericform", "pk": 3, "fields": {"nombre_corto": "REQUERIMIENTO CASO NECESARIO", "mesa": 4, "ordinal": 1, "hora_entrega": "19:00:00", "descripcion": "REQUERIMIENTO EN CASO DE SER NECESARIO"}}, {"model": "genericform.genericfield", "pk": 1, "fields": {"genericform": 1, "verbose_name": "NUMERO DE FAMILIAS", "ordinal": 1, "type": 1, "help_text": "numero de familias", "required": true, "read_only": false, "validation_dict": "{}"}}, {"model": "genericform.genericfield", "pk": 3, "fields": {"genericform": 1, "verbose_name": "NUMERO DE PERSONAS", "ordinal": 2, "type": 1, "help_text": "Ingrese solo numeros de personas", "required": true, "read_only": false, "validation_dict": "{}"}}, {"model": "genericform.genericfield", "pk": 4, "fields": {"genericform": 1, "verbose_name": "NUMERO DE MUJERES", "ordinal": 3, "type": 1, "help_text": "ingrese solo el numero de mujeres", "required": true, "read_only": false, "validation_dict": "{}"}}, {"model": "genericform.genericfield", "pk": 5, "fields": {"genericform": 1, "verbose_name": "NUMERO DE HOMBRES", "ordinal": 4, "type": 1, "help_text": "ingrese numero de hombres", "required": true, "read_only": false, "validation_dict": "{}"}}, {"model": "genericform.genericfield", "pk": 6, "fields": {"genericform": 1, "verbose_name": "NUMERO DE NI\u00d1OS 0-3", "ordinal": 5, "type": 1, "help_text": "ingrese el numero de ni\u00f1os", "required": true, "read_only": true, "validation_dict": "{}"}}, {"model": "genericform.genericfield", "pk": 8, "fields": {"genericform": 1, "verbose_name": "NUMERO DE NI\u00d1OS 4-12", "ordinal": 7, "type": 1, "help_text": "ingrese numero de ni\u00f1os 4-12", "required": true, "read_only": false, "validation_dict": "{}"}}, {"model": "genericform.genericfield", "pk": 9, "fields": {"genericform": 1, "verbose_name": "NUMERO DE ADOLESCENTES 13- 18", "ordinal": 8, "type": 1, "help_text": "ingrese el numero de adolescentes", "required": true, "read_only": false, "validation_dict": "{}"}}, {"model": "genericform.genericfield", "pk": 10, "fields": {"genericform": 1, "verbose_name": "NUMERO DE JOVENES 19- 28", "ordinal": 9, "type": 1, "help_text": "ingrese el numero de jovenes", "required": true, "read_only": false, "validation_dict": "{}"}}, {"model": "genericform.genericfield", "pk": 11, "fields": {"genericform": 1, "verbose_name": "NUMERO DE ADULTOS 29- 64", "ordinal": 10, "type": 1, "help_text": "ingrese el numero de adultos mayores", "required": true, "read_only": false, "validation_dict": "{}"}}, {"model": "genericform.genericfield", "pk": 12, "fields": {"genericform": 1, "verbose_name": "NUMERO DE PERSONAS CON CAPACIDADES ESPECIALES", "ordinal": 11, "type": 1, "help_text": "ingrese el numero de personas con capacidades especiales", "required": true, "read_only": false, "validation_dict": "{}"}}, {"model": "genericform.genericfield", "pk": 13, "fields": {"genericform": 1, "verbose_name": "NUMERO DE MUJERES EMBARAZADAS", "ordinal": 12, "type": 1, "help_text": "ingrese el numero de mujeres embarazadas", "required": true, "read_only": false, "validation_dict": "{}"}}, {"model": "genericform.genericfield", "pk": 14, "fields": {"genericform": 2, "verbose_name": "TIENE BATERIAS SANITARIAS", "ordinal": 1, "type": 8, "help_text": "seleccione si tiene o no bater\u00edas sanitarias", "required": true, "read_only": false, "validation_dict": "{}"}}, {"model": "genericform.genericfield", "pk": 15, "fields": {"genericform": 2, "verbose_name": "EXISTE MANTENIMIENTO DE BATERIAS SANITARIAS", "ordinal": 2, "type": 8, "help_text": "seleccione si existe o no mantenimiento de bater\u00edas sanitarias", "required": false, "read_only": false, "validation_dict": "{}"}}, {"model": "genericform.genericfield", "pk": 16, "fields": {"genericform": 2, "verbose_name": "LA ALIMENTACION CUBRE A LA POBLACION", "ordinal": 3, "type": 8, "help_text": "seleccione si la alimentaci\u00f3n cubre o no la poblaci\u00f3n", "required": true, "read_only": false, "validation_dict": "{}"}}, {"model": "genericform.genericfield", "pk": 17, "fields": {"genericform": 2, "verbose_name": "HAY SERVICIO DE ENERGIA ELECTRICA", "ordinal": 4, "type": 8, "help_text": "seleccione si hay o no servicio de energ\u00eda el\u00e9ctrica", "required": true, "read_only": false, "validation_dict": "{}"}}, {"model": "genericform.genericfield", "pk": 18, "fields": {"genericform": 2, "verbose_name": "TIENEN AGUA", "ordinal": 5, "type": 8, "help_text": "seleccione si tiene o no agua", "required": true, "read_only": false, "validation_dict": "{}"}}, {"model": "genericform.genericfield", "pk": 19, "fields": {"genericform": 2, "verbose_name": "QUE TIPO DE SUMINISTRO DE AGUA TIENEN", "ordinal": 6, "type": 8, "help_text": "seleccione que tipo de suministro de agua tiene", "required": false, "read_only": false, "validation_dict": "{}"}}, {"model": "genericform.genericfield", "pk": 20, "fields": {"genericform": 3, "verbose_name": "NUMERO DE CARPAS", "ordinal": 1, "type": 1, "help_text": "ingrese el n\u00famero de carpas requeridas", "required": false, "read_only": false, "validation_dict": "{}"}}, {"model": "genericform.genericfield", "pk": 21, "fields": {"genericform": 3, "verbose_name": "NUMERO DE BATERIAS SANITARIAS", "ordinal": 2, "type": 1, "help_text": "ingrese el n\u00famero de baterias sanitarias", "required": false, "read_only": false, "validation_dict": "{}"}}, {"model": "genericform.genericfield", "pk": 22, "fields": {"genericform": 3, "verbose_name": "NUMERO DE COLCHONES", "ordinal": 3, "type": 1, "help_text": "ingrese el n\u00famero de colchones requeridos", "required": false, "read_only": false, "validation_dict": "{}"}}, {"model": "genericform.genericfield", "pk": 23, "fields": {"genericform": 3, "verbose_name": "NUMERO DE TANQUES DE AGUA", "ordinal": 4, "type": 1, "help_text": "ingrese el n\u00famero de tanques de agua", "required": false, "read_only": false, "validation_dict": "{}"}}, {"model": "genericform.genericfield", "pk": 24, "fields": {"genericform": 3, "verbose_name": "OTROS REQUERIMIENTOS", "ordinal": 5, "type": 6, "help_text": "ingrese", "required": false, "read_only": false, "validation_dict": "{}"}}, {"model": "genericform.genericfield", "pk": 26, "fields": {"genericform": 3, "verbose_name": "NUMERO DE CAMAS", "ordinal": 6, "type": 1, "help_text": "ingrese el n\u00famero de camas requeridas", "required": false, "read_only": false, "validation_dict": "{}"}}, {"model": "genericform.genericfield", "pk": 27, "fields": {"genericform": 3, "verbose_name": "NUMERO DE SABANAS", "ordinal": 7, "type": 1, "help_text": "ingrese el n\u00famero de sabanas", "required": false, "read_only": false, "validation_dict": "{}"}}, {"model": "genericform.genericparentoption", "pk": 3, "fields": {"genericfield": 15, "tipo": 2}}, {"model": "genericform.genericparentoption", "pk": 4, "fields": {"genericfield": 16, "tipo": 2}}, {"model": "genericform.genericparentoption", "pk": 5, "fields": {"genericfield": 17, "tipo": 2}}, {"model": "genericform.genericparentoption", "pk": 6, "fields": {"genericfield": 18, "tipo": 2}}, {"model": "genericform.genericparentoption", "pk": 7, "fields": {"genericfield": 19, "tipo": 2}}, {"model": "genericform.genericoption", "pk": 7, "fields": {"genericparentoption": 3, "label": "SI", "value": "1"}}, {"model": "genericform.genericoption", "pk": 8, "fields": {"genericparentoption": 3, "label": "NO", "value": "2"}}, {"model": "genericform.genericoption", "pk": 9, "fields": {"genericparentoption": 4, "label": "SI", "value": "1"}}, {"model": "genericform.genericoption", "pk": 10, "fields": {"genericparentoption": 4, "label": "NO", "value": "2"}}, {"model": "genericform.genericoption", "pk": 11, "fields": {"genericparentoption": 5, "label": "SI", "value": "1"}}, {"model": "genericform.genericoption", "pk": 12, "fields": {"genericparentoption": 5, "label": "NO", "value": "2"}}, {"model": "genericform.genericoption", "pk": 13, "fields": {"genericparentoption": 6, "label": "SI", "value": "1"}}, {"model": "genericform.genericoption", "pk": 14, "fields": {"genericparentoption": 6, "label": "NO", "value": "2"}}, {"model": "genericform.genericoption", "pk": 15, "fields": {"genericparentoption": 7, "label": "POTABLE", "value": "1"}}, {"model": "genericform.genericoption", "pk": 16, "fields": {"genericparentoption": 7, "label": "TANQUERO", "value": "2"}}]
+[
+  {
+    "model": "genericform.genericform",
+    "pk": 1,
+    "fields": {
+      "nombre_corto": "GRUPO ETARIO",
+      "mesa": 4,
+      "ordinal": 1,
+      "hora_entrega": "09:00:00",
+      "descripcion": "REPORTE DE POBLACION GRUPO ETARIO"
+    }
+  },
+  {
+    "model": "genericform.genericform",
+    "pk": 2,
+    "fields": {
+      "nombre_corto": "REQUERIMIETOS DIARIOS EN EL ALBERGUE",
+      "mesa": 4,
+      "ordinal": 2,
+      "hora_entrega": "16:00:00",
+      "descripcion": "REPORTE DE REQUERIMIENTOS DIARIOS EN EL ALBERGUE"
+    }
+  },
+  {
+    "model": "genericform.genericform",
+    "pk": 3,
+    "fields": {
+      "nombre_corto": "REQUERIMIENTO CASO NECESARIO",
+      "mesa": 4,
+      "ordinal": 1,
+      "hora_entrega": "19:00:00",
+      "descripcion": "REQUERIMIENTOS EN CASO DE SER NECESARIO"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 1,
+    "fields": {
+      "genericform": 1,
+      "verbose_name": "NUMERO DE FAMILIAS",
+      "ordinal": 1,
+      "type": 1,
+      "help_text": "numero de familias",
+      "required": true,
+      "read_only": false,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 3,
+    "fields": {
+      "genericform": 1,
+      "verbose_name": "NUMERO DE PERSONAS",
+      "ordinal": 2,
+      "type": 1,
+      "help_text": "Ingrese solo numeros de personas",
+      "required": true,
+      "read_only": false,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 4,
+    "fields": {
+      "genericform": 1,
+      "verbose_name": "NUMERO DE MUJERES",
+      "ordinal": 3,
+      "type": 1,
+      "help_text": "ingrese solo el numero de mujeres",
+      "required": true,
+      "read_only": false,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 5,
+    "fields": {
+      "genericform": 1,
+      "verbose_name": "NUMERO DE HOMBRES",
+      "ordinal": 4,
+      "type": 1,
+      "help_text": "ingrese numero de hombres",
+      "required": true,
+      "read_only": false,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 6,
+    "fields": {
+      "genericform": 1,
+      "verbose_name": "NUMERO DE NI\u00d1OS 0-3",
+      "ordinal": 5,
+      "type": 1,
+      "help_text": "ingrese el numero de ni\u00f1os",
+      "required": true,
+      "read_only": true,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 8,
+    "fields": {
+      "genericform": 1,
+      "verbose_name": "NUMERO DE NI\u00d1OS 4-12",
+      "ordinal": 7,
+      "type": 1,
+      "help_text": "ingrese numero de ni\u00f1os 4-12",
+      "required": true,
+      "read_only": false,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 9,
+    "fields": {
+      "genericform": 1,
+      "verbose_name": "NUMERO DE ADOLESCENTES 13- 18",
+      "ordinal": 8,
+      "type": 1,
+      "help_text": "ingrese el numero de adolescentes",
+      "required": true,
+      "read_only": false,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 10,
+    "fields": {
+      "genericform": 1,
+      "verbose_name": "NUMERO DE JOVENES 19- 28",
+      "ordinal": 9,
+      "type": 1,
+      "help_text": "ingrese el numero de jovenes",
+      "required": true,
+      "read_only": false,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 11,
+    "fields": {
+      "genericform": 1,
+      "verbose_name": "NUMERO DE ADULTOS 29- 64",
+      "ordinal": 10,
+      "type": 1,
+      "help_text": "ingrese el numero de adultos mayores",
+      "required": true,
+      "read_only": false,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 12,
+    "fields": {
+      "genericform": 1,
+      "verbose_name": "NUMERO DE PERSONAS CON CAPACIDADES ESPECIALES",
+      "ordinal": 11,
+      "type": 1,
+      "help_text": "ingrese el numero de personas con capacidades especiales",
+      "required": true,
+      "read_only": false,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 13,
+    "fields": {
+      "genericform": 1,
+      "verbose_name": "NUMERO DE MUJERES EMBARAZADAS",
+      "ordinal": 12,
+      "type": 1,
+      "help_text": "ingrese el numero de mujeres embarazadas",
+      "required": true,
+      "read_only": false,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 14,
+    "fields": {
+      "genericform": 2,
+      "verbose_name": "TIENE BATERIAS SANITARIAS",
+      "ordinal": 1,
+      "type": 8,
+      "help_text": "seleccione si tiene o no bater\u00edas sanitarias",
+      "required": true,
+      "read_only": false,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 15,
+    "fields": {
+      "genericform": 2,
+      "verbose_name": "EXISTE MANTENIMIENTO DE BATERIAS SANITARIAS",
+      "ordinal": 2,
+      "type": 8,
+      "help_text": "seleccione si existe o no mantenimiento de bater\u00edas sanitarias",
+      "required": false,
+      "read_only": false,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 16,
+    "fields": {
+      "genericform": 2,
+      "verbose_name": "LOS ALIMENTOS CUBREN A LA POBLACION ALBERGADA",
+      "ordinal": 3,
+      "type": 8,
+      "help_text": "seleccione si la alimentaci\u00f3n cubre o no la poblaci\u00f3n",
+      "required": true,
+      "read_only": false,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 17,
+    "fields": {
+      "genericform": 2,
+      "verbose_name": "HAY SERVICIO DE ENERGIA ELECTRICA",
+      "ordinal": 4,
+      "type": 8,
+      "help_text": "seleccione si hay o no servicio de energ\u00eda el\u00e9ctrica",
+      "required": true,
+      "read_only": false,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 18,
+    "fields": {
+      "genericform": 2,
+      "verbose_name": "TIENEN AGUA",
+      "ordinal": 5,
+      "type": 8,
+      "help_text": "seleccione si tiene o no agua",
+      "required": true,
+      "read_only": false,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 19,
+    "fields": {
+      "genericform": 2,
+      "verbose_name": "QUE TIPO DE SUMINISTRO DE AGUA TIENEN",
+      "ordinal": 6,
+      "type": 8,
+      "help_text": "seleccione que tipo de suministro de agua tiene",
+      "required": false,
+      "read_only": false,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 20,
+    "fields": {
+      "genericform": 3,
+      "verbose_name": "NUMERO DE CARPAS",
+      "ordinal": 1,
+      "type": 1,
+      "help_text": "ingrese el n\u00famero de carpas requeridas",
+      "required": false,
+      "read_only": false,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 21,
+    "fields": {
+      "genericform": 3,
+      "verbose_name": "NUMERO DE BATERIAS SANITARIAS",
+      "ordinal": 2,
+      "type": 1,
+      "help_text": "ingrese el n\u00famero de baterias sanitarias",
+      "required": false,
+      "read_only": false,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 22,
+    "fields": {
+      "genericform": 3,
+      "verbose_name": "NUMERO DE COLCHONES",
+      "ordinal": 3,
+      "type": 1,
+      "help_text": "ingrese el n\u00famero de colchones requeridos",
+      "required": false,
+      "read_only": false,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 23,
+    "fields": {
+      "genericform": 3,
+      "verbose_name": "NUMERO DE TANQUES DE AGUA",
+      "ordinal": 4,
+      "type": 1,
+      "help_text": "ingrese el n\u00famero de tanques de agua",
+      "required": false,
+      "read_only": false,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 24,
+    "fields": {
+      "genericform": 3,
+      "verbose_name": "OTROS REQUERIMIENTOS",
+      "ordinal": 5,
+      "type": 6,
+      "help_text": "ingrese",
+      "required": false,
+      "read_only": false,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 26,
+    "fields": {
+      "genericform": 3,
+      "verbose_name": "NUMERO DE CAMAS",
+      "ordinal": 6,
+      "type": 1,
+      "help_text": "ingrese el n\u00famero de camas requeridas",
+      "required": false,
+      "read_only": false,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericfield",
+    "pk": 27,
+    "fields": {
+      "genericform": 3,
+      "verbose_name": "NUMERO DE SABANAS",
+      "ordinal": 7,
+      "type": 1,
+      "help_text": "ingrese el n\u00famero de sabanas",
+      "required": false,
+      "read_only": false,
+      "validation_dict": "{}"
+    }
+  },
+  {
+    "model": "genericform.genericparentoption",
+    "pk": 3,
+    "fields": {
+      "genericfield": 15,
+      "tipo": 2
+    }
+  },
+  {
+    "model": "genericform.genericparentoption",
+    "pk": 4,
+    "fields": {
+      "genericfield": 16,
+      "tipo": 2
+    }
+  },
+  {
+    "model": "genericform.genericparentoption",
+    "pk": 5,
+    "fields": {
+      "genericfield": 17,
+      "tipo": 2
+    }
+  },
+  {
+    "model": "genericform.genericparentoption",
+    "pk": 6,
+    "fields": {
+      "genericfield": 18,
+      "tipo": 2
+    }
+  },
+  {
+    "model": "genericform.genericparentoption",
+    "pk": 7,
+    "fields": {
+      "genericfield": 19,
+      "tipo": 2
+    }
+  },
+  {
+    "model": "genericform.genericparentoption",
+    "pk": 8,
+    "fields": {
+      "genericfield": 14,
+      "tipo": 1
+    }
+  },
+  {
+    "model": "genericform.genericoption",
+    "pk": 7,
+    "fields": {
+      "genericparentoption": 3,
+      "label": "SI",
+      "value": "1"
+    }
+  },
+  {
+    "model": "genericform.genericoption",
+    "pk": 8,
+    "fields": {
+      "genericparentoption": 3,
+      "label": "NO",
+      "value": "2"
+    }
+  },
+  {
+    "model": "genericform.genericoption",
+    "pk": 9,
+    "fields": {
+      "genericparentoption": 4,
+      "label": "SI",
+      "value": "1"
+    }
+  },
+  {
+    "model": "genericform.genericoption",
+    "pk": 10,
+    "fields": {
+      "genericparentoption": 4,
+      "label": "NO",
+      "value": "2"
+    }
+  },
+  {
+    "model": "genericform.genericoption",
+    "pk": 11,
+    "fields": {
+      "genericparentoption": 5,
+      "label": "SI",
+      "value": "1"
+    }
+  },
+  {
+    "model": "genericform.genericoption",
+    "pk": 12,
+    "fields": {
+      "genericparentoption": 5,
+      "label": "NO",
+      "value": "2"
+    }
+  },
+  {
+    "model": "genericform.genericoption",
+    "pk": 13,
+    "fields": {
+      "genericparentoption": 6,
+      "label": "SI",
+      "value": "1"
+    }
+  },
+  {
+    "model": "genericform.genericoption",
+    "pk": 14,
+    "fields": {
+      "genericparentoption": 6,
+      "label": "NO",
+      "value": "2"
+    }
+  },
+  {
+    "model": "genericform.genericoption",
+    "pk": 15,
+    "fields": {
+      "genericparentoption": 7,
+      "label": "POTABLE",
+      "value": "1"
+    }
+  },
+  {
+    "model": "genericform.genericoption",
+    "pk": 16,
+    "fields": {
+      "genericparentoption": 7,
+      "label": "TANQUERO",
+      "value": "2"
+    }
+  },
+  {
+    "model": "genericform.genericoption",
+    "pk": 17,
+    "fields": {
+      "genericparentoption": 8,
+      "label": "SI",
+      "value": "1"
+    }
+  },
+  {
+    "model": "genericform.genericoption",
+    "pk": 18,
+    "fields": {
+      "genericparentoption": 8,
+      "label": "NO",
+      "value": "2"
+    }
+  },
+  {
+    "model": "genericform.genericformdata",
+    "pk": 11,
+    "fields": {
+      "form": 1,
+      "data": "{u'NUMERO DE JOVENES 19- 28': u'8', u'NUMERO DE PERSONAS CON CAPACIDADES ESPECIALES': u'10', u'NUMERO DE NI\\xd1OS 4-12': u'6', u'NUMERO DE HOMBRES': u'4', u'NUMERO DE MUJERES': u'3', u'NUMERO DE ADOLESCENTES 13- 18': u'7', u'NUMERO DE NI\\xd1OS 0-3': u'5', u'NUMERO DE PERSONAS': u'2', u'NUMERO DE FAMILIAS': u'1', u'NUMERO DE MUJERES EMBARAZADAS': u'11', u'NUMERO DE ADULTOS 29- 64': u'9'}"
+    }
+  }
+]
