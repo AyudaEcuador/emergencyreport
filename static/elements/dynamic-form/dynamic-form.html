@@ -113,7 +113,7 @@
             <form is="iron-form"
                   id="reportForm"
                   method="post"
-                  action="/api-forms/forms/1"
+                  action="/api-forms/forms/{{ formID }}"
                   content-type="application/json"
                   disableNativeValidationUi>
             </form>
@@ -230,16 +230,23 @@
                     }
                 },
 
-                formMetadataService: Object
+                formMetadataService: Object,
+                formID: Number
             },
 
             ready: function () {
+                this.setFormID();
                 this.getFormMetadata();
+            },
+
+            setFormID: function () {
+                var url = location.pathname;
+                this.formID = url.substring(url.lastIndexOf('/') + 1);
             },
 
             getFormMetadata: function () {
                 this.formMetadataService = document.createElement('iron-ajax');
-                this.formMetadataService.url = '/api-forms/metadata/1?format=json';
+                this.formMetadataService.url = '/api-forms/metadata/' + this.formID + '?format=json';
                 this.formMetadataService.handleAs = 'json';
                 this.appendChild(this.formMetadataService);
                 this.formMetadataService.addEventListener(

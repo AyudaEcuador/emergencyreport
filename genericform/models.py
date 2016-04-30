@@ -14,7 +14,8 @@ class GenericForm(models.Model):
         return str(self.nombre_corto)
 
     class Meta:
-        pass
+        verbose_name_plural = 'Formularios'
+        verbose_name = 'Formulario'
 
 
 class GenericField(models.Model):
@@ -82,5 +83,9 @@ class GenericFormData(models.Model):
     data = models.TextField()
 
     def __unicode__(self):
-        return str(self.id)
+        return "Reporte %s de formulario %s" % (self.id, self.form.nombre_corto)
+
+    class Meta:
+        verbose_name_plural = 'Reportes de formularios'
+        verbose_name = 'Reporte de formulario'
 

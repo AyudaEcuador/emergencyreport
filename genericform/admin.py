@@ -12,7 +12,7 @@ class GenericOptionInline(NestedStackedInline):
 
 class GenericParentOptionInline(NestedStackedInline):
     model = models.GenericParentOption
-    extra = 0
+    extra = 1
     inlines = [GenericOptionInline]
 
 
@@ -29,25 +29,25 @@ class GenericFormAdmin(NestedModelAdmin):
 admin.site.register(models.GenericForm, GenericFormAdmin)
 
 
-class GenericFieldAdmin(admin.ModelAdmin):
-    pass
-
-
-admin.site.register(models.GenericField, GenericFieldAdmin)
-
-
-class GenericParentOptionAdmin(admin.ModelAdmin):
-    pass
-
-
-admin.site.register(models.GenericParentOption, GenericParentOptionAdmin)
-
-
-class GenericOptionAdmin(admin.ModelAdmin):
-    pass
-
-
-admin.site.register(models.GenericOption, GenericOptionAdmin)
+# class GenericFieldAdmin(admin.ModelAdmin):
+#     pass
+#
+#
+# admin.site.register(models.GenericField, GenericFieldAdmin)
+#
+#
+# class GenericParentOptionAdmin(admin.ModelAdmin):
+#     pass
+#
+#
+# admin.site.register(models.GenericParentOption, GenericParentOptionAdmin)
+#
+#
+# class GenericOptionAdmin(admin.ModelAdmin):
+#     pass
+#
+#
+# admin.site.register(models.GenericOption, GenericOptionAdmin)
 
 
 class GenericFormDataAdmin(admin.ModelAdmin):

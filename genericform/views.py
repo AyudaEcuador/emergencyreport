@@ -2,7 +2,7 @@ from rest_framework import generics
 from rest_framework import views
 from rest_framework import response
 from rest_framework import permissions
-from django.shortcuts import get_object_or_404
+from django.shortcuts import render_to_response
 from . import models
 from . import serializers
 
@@ -19,6 +19,3 @@ class FormDataView(views.APIView):
         models.GenericFormData.objects.create(
             form_id=form, data=request.data)
         return response.Response({})
-
-
-
