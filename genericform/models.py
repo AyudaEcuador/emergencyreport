@@ -30,7 +30,7 @@ class GenericField(models.Model):
     )
 
     genericform = models.ForeignKey(GenericForm, related_name='fields')
-    verbose_name = models.CharField(max_length=20)
+    verbose_name = models.CharField(max_length=60)
     ordinal = models.IntegerField()
     type = models.IntegerField(choices=TIPO_CHOICES)
     help_text = models.CharField(max_length=128)

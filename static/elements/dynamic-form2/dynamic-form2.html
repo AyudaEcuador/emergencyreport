@@ -1,6 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
-<dom-module id="dynamic-form">
+<dom-module id="dynamic-form2">
     <template>
         <style>
             .buttons {
@@ -86,7 +86,7 @@
                 }
             }
         </style>
-        <paper-card heading="{{ metadata.descripcion }}" class="form-card">
+        <paper-card heading="Reporte de necesidades" class="form-card">
             <div class="card-content"></div>
             <div id="header">
                 <div>Nombre corto:
@@ -120,13 +120,13 @@
             <footer class="buttons horizontal layout end flexchild">
                 <paper-toast id="toastResponse" duration="30000"></paper-toast>
               <!--  <paper-button id="dismiss" class="dismiss" on-click="_closeHandler">Cancelar</paper-button> -->
-                <paper-button id="confirm" class="acept" on-click="_confirmHandler">Enviar</paper-button>
+                <paper-button id="confirm" class="acept" on-click="_confirmHandler">Aceptar</paper-button>
             </footer>
         </paper-card>
     </template>
     <script>
         Polymer({
-            is: "dynamic-form",
+            is: "dynamic-form2",
 
             listeners: {
                 'iron-form-presubmit': 'setupRequest'
@@ -239,7 +239,7 @@
 
             getFormMetadata: function () {
                 this.formMetadataService = document.createElement('iron-ajax');
-                this.formMetadataService.url = '/api-forms/metadata/1?format=json';
+                this.formMetadataService.url = '/api-forms/metadata/3?format=json';
                 this.formMetadataService.handleAs = 'json';
                 this.appendChild(this.formMetadataService);
                 this.formMetadataService.addEventListener(
