@@ -84,6 +84,7 @@ class GenericOption(models.Model):
         return str(self.id)
 
     class Meta:
+        ordering = ('ordinal',)
         pass
 
 
