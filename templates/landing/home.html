@@ -50,28 +50,38 @@ document.getElementById('progress').active = true;
     <div class="divTitle"
          style="background-color: #009688;text-align: center;width: 30%;margin-left: auto;margin-right: auto">
         <img src="{% static "logo.png" %}"/>
+    <center><b>EcuReport</b></center>
+
     </div>
 
 
     <div style="width: 30%;margin-left: auto;margin-right: auto;background-color: #4fc3f7">
 
-    <center>ECUREPORT</center> <br>
             {% if not user.is_authenticated %}
 
 
+            <paper-button onclick="window.location.href='/login/'">Iniciar Sesion</paper-button> <br>
 
-            <center><a href=/login>LOGIN</a></center>
 
 
             {% else %}
-                Usuario: {{ user.username }}
-                <div class="submit-row">
-                    <a href="/logout/">Cerrar sesion</a>
-                </div>
 
-                <div class="submit-row">
-                    <a href="/mesas/">Seleccionar Mesa</a>
-                </div>
+                <div style="background-color: greenyellow;text-align:center"   >Usuario: {{ user.username }}</div>
+
+
+                <paper-button onclick="window.location.href='/mesas/'">Seleccionar Mesa</paper-button> <br>
+                <paper-button onclick="window.location.href='/logout/'">Cerrar Sesion</paper-button> <br>
+
+
+
+
+{#                <div class="submit-row">#}
+{#                    <a href="/logout/">Cerrar sesion</a>#}
+{#                </div>#}
+
+{#                <div class="submit-row">#}
+{#                    <a href="/mesas/">Seleccionar Mesa</a>#}
+{#                </div>#}
 
             {% endif %}
 
