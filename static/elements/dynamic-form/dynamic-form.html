@@ -247,8 +247,6 @@
             getFormMetadata: function () {
                 this.formMetadataService = document.createElement('iron-ajax');
                 this.formMetadataService.url = '/api-forms/metadata/' + this.formID + '?format=json';
-
-
                 this.formMetadataService.handleAs = 'json';
                 this.appendChild(this.formMetadataService);
                 this.formMetadataService.addEventListener(
@@ -307,6 +305,9 @@
                 text_input.autoValidate = fieldType['allowedPattern'] != undefined || fieldType['pattern'];
                 text_input.defaultError = fieldType['defaultError'];
                 text_input.patternMessage = fieldType['patternError'];
+
+                //Style
+                text_input.querySelector('input').style.border = '1px solid';
                 return text_input;
             },
 
@@ -323,12 +324,7 @@
             _confirmHandler: function () {
                 if (this.$.reportForm.validate()) {
                     this.showValue();
-                    this.$$('#reportForm').submit();
-
-
-
-                    console.log('hey')
-
+                    this.$$('#reportForm').submit()
                 } else {
                     this.showError();
                 }
@@ -386,7 +382,4 @@
 
         })
     </script>
-
-
-
 </dom-module>
