@@ -42,6 +42,10 @@ class FormDataView(views.APIView):
     def post(self, request, form, format=None):
         models.GenericFormData.objects.create(
             form_id=form, data=request.data)
+
+        print request.data['']
+
+
         return response.Response({})
 
 

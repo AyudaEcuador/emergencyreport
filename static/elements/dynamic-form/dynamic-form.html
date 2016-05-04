@@ -90,6 +90,9 @@
             <div class="card-content"></div>
             <div id="header">
                 <div>Nombre corto:
+
+                    <!-- <paper-input readonly="true" name="nombre_corto" value="{{ metadata.nombre_corto  }}"> </paper-input> -->
+
                     <span class="cafe-location cafe-light">
                         {{ metadata.nombre_corto }}
                     </span>
@@ -104,7 +107,7 @@
                         {{ metadata.mesa }}
                     </span>
                 </div>
-                <div>Ordinal:
+                <div>Numero de Formulario:
                     <span class="cafe-location cafe-light">
                         {{ metadata.ordinal }}
                     </span>
@@ -128,8 +131,11 @@
         Polymer({
             is: "dynamic-form",
 
+
             listeners: {
-                'iron-form-presubmit': 'setupRequest'
+                'iron-form-presubmit': 'setupRequest',
+                'iron-form-error': 'formError',
+                'iron-form-response':'formResponse'
             },
 
             properties: {
@@ -323,7 +329,7 @@
 
             _confirmHandler: function () {
                 if (this.$.reportForm.validate()) {
-                    this.showValue();
+                    //this.showValue();
                     this.$$('#reportForm').submit()
                 } else {
                     this.showError();
@@ -372,6 +378,23 @@
                 }
 
             },
+
+
+            formError: function () {
+                console.log('nof');
+            },
+            formResponse: function (e){
+                this.showValue();
+                setTimeout(function(){
+                    console.log("THIS IS");
+                }, 2000);
+                window.location = "/";
+
+                    console.log("Server Response: ",e.detail);
+                    console.log("Server Response: ",e);
+                    console.log("Server Response: ", e.detail.__data__.status);
+            },
+
 
             setupRequest: function () {
                 var csrftoken = document.cookie.match('(^|;)\\s*csrftoken\\s*=\\s*([^;]+)');
