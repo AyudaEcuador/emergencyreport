@@ -13,6 +13,7 @@ class Mesa(models.Model):
 class GenericForm(models.Model):
     nombre_corto = models.CharField(max_length=150)
     mesa = models.ForeignKey(Mesa)
+    # mesa = models.ForeignKey(Mesa)
     ordinal = models.IntegerField()
     hora_entrega = models.TimeField()
     descripcion = models.TextField()
