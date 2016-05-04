@@ -24,7 +24,10 @@
 
         {% for formulario in formularios_list %}
 
-        <a href="/mesa/{{mesa_id}}/reporte/{{formulario.id}}">({{formulario.ordinal}}) {{ formulario.nombre_corto }}</a> </br>
+        <paper-button onclick="window.location.href='/mesa/{{mesa_id}}/reporte/{{formulario.id}}'">({{formulario.ordinal}}) {{ formulario.nombre_corto }} </paper-button> <br>
+
+
+{#        <a href="/mesa/{{mesa_id}}/reporte/{{formulario.id}}">({{formulario.ordinal}}) {{ formulario.nombre_corto }}</a> </br>#}
 
         {% empty %}
             <li>No existen formularios habilitados para su usuario.</li>

@@ -20,11 +20,14 @@
 <div class="horizontal layout">
     <div class="content">
 
+
+
+
                 <paper-menu multi>
 
         {% for mesa in mesas_list %}
 
-        <a href="/mesa/{{mesa.id}}/reportes/">{{ mesa.nombre_corto }}</a> </br>
+                <paper-button onclick="window.location.href='/mesa/{{mesa.id}}/reportes/'">{{ mesa.nombre_corto }} </paper-button> <br>
 
         {% empty %}
             <li>No existen mesas registradas para su usuario.</li>
