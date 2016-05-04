@@ -86,11 +86,10 @@ document.getElementById('progress').active = true;
 
 
             {% else %}
-                Usuario: {{ user.username }}
+                <div style="background-color: greenyellow;text-align:center"   >Usuario: {{ user.username }}</div>
 
-                <div class="submit-row">
-                    <a href="/logout/">Cerrar sesion</a>
-                </div>
+                <paper-button onclick="window.location.href='/logout/'">Cerrar Sesion</paper-button> <br>
+
 
             {% endif %}
 
