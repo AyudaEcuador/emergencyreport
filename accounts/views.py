@@ -26,9 +26,13 @@ def login(request):
             # print "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
             # print "BAD USER"
 
-            return redirect("/failed/")
+            return redirect("/login_failed/")
     else:
          return render(request, 'registration/login.html', c)
+
+
+def login_failed(request):
+         return render(request, 'registration/login_failed.html', {})
 
 def my_logout(request):
     logout(request)

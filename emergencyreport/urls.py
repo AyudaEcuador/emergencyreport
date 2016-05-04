@@ -7,9 +7,14 @@ urlpatterns = [
     url(r'^$', 'shell.views.landing', name='landing'),
     url(r'^login/', 'accounts.views.login', name='login'),
 
+
+    url(r'^login_failed/', 'accounts.views.login_failed', name='login_failed'),
+
     url(r'^mesa/(?P<mesa_id>\d+)/reportes/$', 'genericform.views.formularios_por_mesa', name='formularios_por_mesa'),
 
     url(r'^mesas/$', 'genericform.views.mesas', name='mesas'),
+
+
 
     # url(r'^login/', include(admin.site.urls)),
 
