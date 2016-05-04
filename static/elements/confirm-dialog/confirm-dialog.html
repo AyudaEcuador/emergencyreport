@@ -1,0 +1,47 @@
+<!-- element-container element, this element is going to be filled with any dynamic element-->
+<dom-module id="confirm-dialog">
+
+    <style is="custom-style">
+        paper-dialog {
+            position: fixed;
+            top: 16px;
+            width: 300px;
+            height: 300px;
+            overflow: auto;
+        }
+
+    </style>
+    <template>
+<paper-dialog id="dialog" modal>
+  <h2>Confirmación</h2>
+  <paper-dialog-scrollable id="dialogScrollable">
+      <p>[[content]]</p>
+
+  </paper-dialog-scrollable>
+  <div class="buttons">
+    <paper-button dialog-confirm on-click="redirect_function">Aceptar</paper-button>
+  </div>
+</paper-dialog>
+    </template>
+    <script>
+        (function () {
+            confirmDialog = Polymer({
+                is: 'confirm-dialog',
+                properties:{
+                    content:String,
+                    redirect_url:String
+                },
+                factoryImpl: function (content,redirect_url) {
+                    this.content = content;
+                    this.redirect_url = redirect_url;
+                    this.$.dialog.open();
+                },
+                redirect_function: function () {
+                    window.location.href=this.redirect_url;
+                },
+            });
+        })();
+
+    </script>
+
+</dom-module>

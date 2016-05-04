@@ -24,4 +24,6 @@ urlpatterns = [
 
     url(r'^mesa/(?P<mesa_id>\d+)/reporte/(?P<reporte_id>\d+)$', TemplateView.as_view(template_name='djform.html')),
 
+
+
 ]

@@ -384,15 +384,10 @@
                 console.log('nof');
             },
             formResponse: function (e){
-                this.showValue();
-                setTimeout(function(){
-                    console.log("THIS IS");
-                }, 2000);
-                window.location = "/";
-
-                    console.log("Server Response: ",e.detail);
-                    console.log("Server Response: ",e);
-                    console.log("Server Response: ", e.detail.__data__.status);
+                var response = e.detail.response;
+                var modal = new confirmDialog(response.mensaje,response.redirect_url);
+                var card = document.querySelector('.form-card');
+                card.appendChild(modal);
             },
 
 

@@ -40,12 +40,14 @@ class FormDataView(views.APIView):
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request, form, format=None):
-        models.GenericFormData.objects.create(
+        obj = models.GenericFormData.objects.create(
             form_id=form, data=request.data)
 
-        print request.data['']
 
 
-        return response.Response({})
+        redirect_url = "/mesa/" + str(obj.form.mesa.id) + "/reportes/"
+        mensaje = "El formulario " + str(obj.form.ordinal) + " de la mesa " + str(obj.form.mesa.numero_mesa) + " se grabo correctamente."
+
+        return response.Response({'saved_id':obj.id,'redirect_url':redirect_url,'mensaje':mensaje})
 
 
