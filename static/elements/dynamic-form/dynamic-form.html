@@ -3,6 +3,20 @@
 <dom-module id="dynamic-form">
     <template>
         <style>
+
+             @media screen and (min-width: 1100px) {
+        .content {
+            margin: 2% 15% 3% 15%;
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 1100px) {
+        .content {
+            margin: 0%;
+            width: 100%;
+        }
+    }
             .buttons {
                 padding-left: 36px;
                 @apply(--layout-vertical);
@@ -87,7 +101,12 @@
                 }
             }
         </style>
-        <paper-card heading="{{ metadata.descripcion }}" class="form-card">
+        <paper-toolbar>
+  <div class="title">{{header}}</div>
+            </paper-toolbar>
+            <div class="horizontal layout">
+    <div class="content">
+ <paper-card class="form-card">
             <div class="card-content"></div>
             <div id="header">
                 <div>Nombre corto:
@@ -123,7 +142,8 @@
               <!--  <paper-button id="dismiss" class="dismiss" on-click="_closeHandler">Cancelar</paper-button> -->
                 <paper-button id="confirm" class="acept button" on-click="_confirmHandler">Enviar</paper-button>
             </footer>
-        </paper-card>
+        </paper-card>    </div>
+</div>
     </template>
     <script>
         Polymer({
@@ -135,6 +155,10 @@
 
             properties: {
                 metadata: Object,
+                header:{
+                  type:String,
+                    computed:'computeHeader(metadata.ordinal , metadata.descripcion)'
+                },
                 fields: {
                     type: Array,
                     value: function () {
@@ -245,6 +269,10 @@
                 this.formID = url.substring(url.lastIndexOf('/') + 1);
             },
 
+            computeHeader:function (ordinal , description) {
+                return ordinal + ' ' + description;
+            },
+
             getFormMetadata: function () {
                 this.formMetadataService = document.createElement('iron-ajax');
                 this.formMetadataService.url = '/api-forms/metadata/' + this.formID + '?format=json';
@@ -277,7 +305,7 @@
 
             generateFormFields: function () {
                 var fields = this.metadata['fields'];
-                for (var i = 0; i < fields.length; i++) {
+                for (var i = fields.length -1 ; i >= 0; i--) {
                     var field = fields[i];
                     var dom_field = this.getDomElementFromField(field);
                     var container = new elementContainer(dom_field, field['help_text']);
@@ -294,7 +322,7 @@
             getTextInput: function (field) {
                 var fieldType = this.fieldsMappingTypes[field['type']];
                 var text_input = document.createElement(fieldType['widget']);
-                text_input.label = field['verbose_name'];
+                text_input.label = '#' + field['ordinal'] + ' ' + field['verbose_name'];
                 text_input.name = field['verbose_name'];
                 text_input.required = field['required'];
                 text_input.errorMessage = fieldType['defaultError'];
