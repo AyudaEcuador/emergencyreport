@@ -24,7 +24,7 @@
 
         {% for formulario in formularios_list %}
 
-        <paper-button onclick="window.location.href='/mesa/{{mesa_id}}/reporte/{{formulario.id}}'">({{formulario.ordinal}}) {{ formulario.nombre_corto }} </paper-button> <br>
+        <paper-button onclick="window.location.href='/mesa/{{mesa_id}}/reporte/{{formulario.id}}'">#{{formulario.ordinal}} - {{ formulario.nombre_corto }} </paper-button> <br>
 
 
 {#        <a href="/mesa/{{mesa_id}}/reporte/{{formulario.id}}">({{formulario.ordinal}}) {{ formulario.nombre_corto }}</a> </br>#}

@@ -79,7 +79,7 @@ class GenericOption(models.Model):
     genericparentoption = models.ForeignKey(GenericParentOption, related_name='options')
     label = models.CharField(max_length=15)
     value = models.CharField(max_length=20, help_text='El valor del campo sera convertido')
-
+    ordinal = models.IntegerField(default=0)
     def __unicode__(self):
         return str(self.id)
 

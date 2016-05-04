@@ -27,7 +27,7 @@
 
         {% for mesa in mesas_list %}
 
-                <paper-button onclick="window.location.href='/mesa/{{mesa.id}}/reportes/'">#{{ mesa.numero_mesa }} {{ mesa.nombre_corto }} </paper-button> <br>
+                <paper-button onclick="window.location.href='/mesa/{{mesa.id}}/reportes/'">#{{ mesa.numero_mesa }} - {{ mesa.nombre_corto }} </paper-button> <br>
 
         {% empty %}
             <li>No existen mesas registradas para su usuario.</li>
