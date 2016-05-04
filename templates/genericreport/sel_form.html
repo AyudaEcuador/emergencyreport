@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Reporte</title>
+    <title>Seleccione su reporte</title>
 
     <script src="/static/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
@@ -13,13 +13,27 @@
 <body unresolved>
 
 <paper-toolbar>
-  <div class="title">Reporte</div>
+  <div class="title">SELECCIONE SU FORMULARIO</div>
 
 </paper-toolbar>
 
 <div class="horizontal layout">
     <div class="content">
-        <dynamic-form></dynamic-form>
+
+                <paper-menu multi>
+
+        {% for formulario in formularios_list %}
+
+        <a href="/mesa/{{mesa_id}}/reporte/{{formulario.id}}">({{formulario.ordinal}}) {{ formulario.nombre_corto }}</a> </br>
+
+        {% empty %}
+            <li>No existen formularios habilitados para su usuario.</li>
+
+
+
+        {% endfor %}
+</paper-menu>
+
 
     </div>
 </div>

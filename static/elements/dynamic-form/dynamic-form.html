@@ -247,6 +247,8 @@
             getFormMetadata: function () {
                 this.formMetadataService = document.createElement('iron-ajax');
                 this.formMetadataService.url = '/api-forms/metadata/' + this.formID + '?format=json';
+
+
                 this.formMetadataService.handleAs = 'json';
                 this.appendChild(this.formMetadataService);
                 this.formMetadataService.addEventListener(
@@ -293,7 +295,7 @@
             getTextInput: function (field) {
                 var fieldType = this.fieldsMappingTypes[field['type']];
                 var text_input = document.createElement(fieldType['widget']);
-                text_input.label = field['verbose_name'];
+                text_input.label = String('#') + String(field['ordinal']) + " " + String(field['verbose_name']);
                 text_input.name = field['verbose_name'];
                 text_input.required = field['required'];
                 text_input.errorMessage = fieldType['defaultError'];
@@ -311,6 +313,7 @@
             getSelectInput: function (field) {
                 var fieldType = this.fieldsMappingTypes[field['type']];
                 var select_input = new selectElement(field['options'], field['verbose_name']);
+                select_input.label = String('#') + String(field['ordinal']) + " " + String(field['verbose_name']);
                 select_input.required = field['required'];
                 select_input.errorMessage = fieldType['defaultError'];
 
@@ -320,7 +323,12 @@
             _confirmHandler: function () {
                 if (this.$.reportForm.validate()) {
                     this.showValue();
-                    this.$$('#reportForm').submit()
+                    this.$$('#reportForm').submit();
+
+
+
+                    console.log('hey')
+
                 } else {
                     this.showError();
                 }
@@ -347,7 +355,7 @@
             },
 
             showError: function (string) {
-                this.$.toastResponse.text = this.$.toastResponse.text + 'No es válido el caracter ' + string + 'en el campo incorrecto';
+                this.$.toastResponse.text = this.$.toastResponse.text + 'No es válido el caracter ' + XYZ + 'en el campo incorrecto';
                 this.$.toastResponse.show();
             },
 
@@ -378,4 +386,7 @@
 
         })
     </script>
+
+
+
 </dom-module>

@@ -2,7 +2,7 @@
   "name": "emergencyreport",
   "homepage": "https://github.com/desastre-ecuador/emergencyreport",
   "authors": [
-    "andres <andres_anies@hotmail.com> carlos wikicarlos@gmail.com"
+    "andres <andres_anies@hotmail.com>, carlos <wikicarlos@gmail.com>"
   ],
   "description": "Aplicación de gestión de reportes genericos para reportes logísticos",
   "main": "",
