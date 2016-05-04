@@ -5,7 +5,8 @@
         <style>
             .buttons {
                 padding-left: 36px;
-                float: left;
+                @apply(--layout-vertical);
+                @apply(--layout-center);
             }
 
             #header {
@@ -118,9 +119,9 @@
                   disableNativeValidationUi>
             </form>
             <footer class="buttons horizontal layout end flexchild">
-                <paper-toast id="toastResponse" duration="30000"></paper-toast>
+                <!--<paper-toast id="toastResponse" duration="30000"></paper-toast>-->
               <!--  <paper-button id="dismiss" class="dismiss" on-click="_closeHandler">Cancelar</paper-button> -->
-                <paper-button id="confirm" class="acept" on-click="_confirmHandler">Enviar</paper-button>
+                <paper-button id="confirm" class="acept button" on-click="_confirmHandler">Enviar</paper-button>
             </footer>
         </paper-card>
     </template>
@@ -305,6 +306,9 @@
                 text_input.autoValidate = fieldType['allowedPattern'] != undefined || fieldType['pattern'];
                 text_input.defaultError = fieldType['defaultError'];
                 text_input.patternMessage = fieldType['patternError'];
+
+                //Style
+                text_input.querySelector('input').style.border = '1px solid';
                 return text_input;
             },
 
