@@ -24,7 +24,7 @@ def formularios_por_mesa(request,mesa_id):
 
 def mesas(request):
      dict = {}
-     dict['mesas_list'] = Mesa.objects.filter()
+     dict['mesas_list'] = Mesa.objects.filter().order_by('numero_mesa')
 
      print len(dict['mesas_list'])
      return render(request, 'genericreport/sel_mesa.html', dict)
