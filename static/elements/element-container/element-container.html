@@ -63,6 +63,8 @@
         <paper-dialog id="help" class="size-position">
             <h2>Ayuda</h2>
             <p> {{ message }}</p>
+            <p> El formato correcto es: {{ format }}</p>
+            <p> Ejemplo: {{ example }}</p>
         </paper-dialog>
     </template>
     <script>
@@ -72,10 +74,14 @@
                 //attributes that the element-container element has
                 properties: {
                     message: String,
+                    format: String,
+                    example: String,
                 },
 
-                factoryImpl: function (element, message) {
+                factoryImpl: function (element, message, format, example) {
                     this.message = message;
+                    this.format = format;
+                    this.example = example;
                     this.$$('#contentSection').appendChild(element);
                 },
 

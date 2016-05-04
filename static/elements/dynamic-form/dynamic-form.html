@@ -124,11 +124,11 @@
                         {{ metadata.mesa }}
                     </span>
                 </div>
-                <div>Ordinal:
+              <!--  <div>Ordinal:
                     <span class="cafe-location cafe-light">
                         {{ metadata.ordinal }}
                     </span>
-                </div>
+                </div>-->
             </div>
             <form is="iron-form"
                   id="reportForm"
@@ -192,7 +192,9 @@
                                 'allowedPattern': '^[0-9]*$',
                                 'pattern': '^[0-9]*$',
                                 'patternError': 'Solo se permite el ingreso de números enteros',
-                                'defaultError': 'El campo es obligatorio'
+                                'defaultError': 'El campo es obligatorio',
+                                'format':'Números enteros',
+                                'ejemplo':'50'
                             },
 
                             'TEXTO_SOLO_DECIMALES': {
@@ -200,7 +202,9 @@
                                 'allowedPattern': '^[0-9]+(\.[0-9]{1,2})?$',
                                 'pattern': '^[0-9]+(\.[0-9]{1,2})?$',
                                 'patternError': 'Solo se permite el ingreso de numeros con dos decimales',
-                                'defaultError': 'El campo es obligatorio'
+                                'defaultError': 'El campo es obligatorio',
+                                'format':'Número con dos decimales',
+                                'ejemplo':'10,90'
 
                             },
 
@@ -308,7 +312,8 @@
                 for (var i = fields.length -1 ; i >= 0; i--) {
                     var field = fields[i];
                     var dom_field = this.getDomElementFromField(field);
-                    var container = new elementContainer(dom_field, field['help_text']);
+                    var fieldType = this.fieldsMappingTypes[field['type']];
+                    var container = new elementContainer(dom_field, field['help_text'], fieldType['format'],fieldType['ejemplo']);
                     this.$$('#reportForm').appendChild(container);
                     this.fields.push(dom_field);
                 }
