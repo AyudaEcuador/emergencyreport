@@ -1,0 +1,48 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/google-map/google-map.html">
+<link rel="import" href="../../bower_components/google-map/google-map-marker.html">
+
+<dom-module id="geofield-element">
+    <template>
+        <style>
+            :host {
+                display: block;
+                height: 75vh;
+            }
+        </style>
+        <paper-button on-click="getCurrentUserLocation">Marcar ubicacion actual</paper-button>
+        <google-map
+                id="googleMap"
+                api-key="AIzaSyCRZYfzpDw_th8Jjr3mdCEH3e739UmqmEE"
+                latitude="{{ latitude }}" longitude="{{ longitude }}" zoom="14">
+            <google-map-marker id="marker" latitude="{{ latitude }}" longitude="{{ longitude }}"
+                               title="Go Giants!"></google-map-marker>
+        </google-map>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'geofield-element',
+
+            properties: {
+                latitude: {
+                    type: Number,
+                    notify: true,
+                    reflectToAttribute: true
+                },
+                longitude: {
+                    type: Number,
+                    notify: true,
+                    reflectToAttribute: true
+                }
+            },
+
+            getCurrentUserLocation: function () {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    this.latitude = position.coords.latitude;
+                    this.longitude = position.coords.longitude;
+                }.bind(this));
+            }
+        });
+    </script>
+</dom-module>
