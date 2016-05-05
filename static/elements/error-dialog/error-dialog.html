@@ -13,7 +13,7 @@
     </style>
     <template>
 <paper-dialog id="dialog" modal>
-  <h2>Error</h2>
+  <h2>Advertencia</h2>
   <paper-dialog-scrollable id="dialogScrollable">
       <p>[[content]]</p>
 
@@ -25,7 +25,7 @@
     </template>
     <script>
         (function () {
-            confirmDialog = Polymer({
+            errorDialog = Polymer({
                 is: 'error-dialog',
                 properties:{
                     content:String,
