@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reporte</title>
+
+    <script src="/static/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="/static/elements/elements.html">
+
+</head>
+<body unresolved>
+
+<paper-toolbar>
+  <div class="title">Seleccione su mesa</div>
+
+</paper-toolbar>
+
+<div class="horizontal layout">
+    <div class="content">
+
+
+
+
+                <paper-menu multi>
+
+        {% for mesa in mesas_list %}
+
+                <paper-button onclick="window.location.href='/mesa/{{mesa.id}}/reportes/'">#{{ mesa.numero_mesa }} - {{ mesa.nombre_corto }} </paper-button> <br>
+
+        {% empty %}
+            <li>No existen mesas registradas para su usuario.</li>
+
+        {% endfor %}
+</paper-menu>
+
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -3,9 +3,17 @@ from django.contrib.postgres.fields import JSONField
 
 
 # Create your models here.
+class Mesa(models.Model):
+    nombre_corto = models.CharField(max_length=150)
+    numero_mesa = models.IntegerField()
+
+    def __unicode__(self):
+        return str(self.nombre_corto)
+
 class GenericForm(models.Model):
     nombre_corto = models.CharField(max_length=150)
-    mesa = models.IntegerField()
+    mesa = models.ForeignKey(Mesa)
+    # mesa = models.ForeignKey(Mesa)
     ordinal = models.IntegerField()
     hora_entrega = models.TimeField()
     descripcion = models.TextField()
@@ -48,6 +56,7 @@ class GenericField(models.Model):
             return self.options_type.options
 
     class Meta:
+        ordering = ("ordinal",)
         pass
 
 
@@ -70,11 +79,12 @@ class GenericOption(models.Model):
     genericparentoption = models.ForeignKey(GenericParentOption, related_name='options')
     label = models.CharField(max_length=15)
     value = models.CharField(max_length=20, help_text='El valor del campo sera convertido')
-
+    ordinal = models.IntegerField(default=0)
     def __unicode__(self):
         return str(self.id)
 
     class Meta:
+        ordering = ('ordinal',)
         pass
 
 

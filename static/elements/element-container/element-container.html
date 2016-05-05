@@ -17,24 +17,25 @@
 
         #helper {
             margin-top: 3%;
-            width: 30px;
-            margin-right: 5%;
+            margin-right: 10%;
         }
 
-        #helper-icon {
-            --iron-icon-fill-color: #FF9800;
+        #helper-button {
+            --paper-fab-background: var(--paper-light-blue-500);
+            --paper-fab-keyboard-focus-background: var(--paper-light-blue-900);
         }
 
         #contentSection {
-            padding-right: 20%;
+            padding-right: 10%;
         }
 
-        .tooltip {
-            box-sizing: border-box;
-            height: 100%;
-            padding: 8px;
-            border-radius: 50%;
-            cursor: pointer;
+        paper-dialog.help {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            width: 300px;
+            height: 300px;
+            overflow: auto;
         }
 
         @media screen and (max-width: 1100px) {
@@ -53,10 +54,18 @@
             <section class="flexchild" id="contentSection">
             </section>
             <section class="horizontal layout" id="helper">
-                <iron-icon id="helper-icon" icon="icons:help"></iron-icon>
-                <paper-tooltip class="tooltip" for="helper-icon"> {{ message }}</paper-tooltip>
+                <!--<iron-icon id="helper-icon" icon="icons:help"></iron-icon>-->
+                <!--<paper-tooltip class="tooltip" for="helper-icon"> {{ message }}</paper-tooltip>-->
+                <paper-fab id="helper-button" on-click="toggleDialog" icon="announcement" title="Ayuda"></paper-fab>
+
             </section>
         </section>
+        <paper-dialog id="help" class="size-position">
+            <h2>Ayuda</h2>
+            <p> {{ message }}</p>
+            <p> El formato correcto es: {{ format }}</p>
+            <p> Ejemplo: {{ example }}</p>
+        </paper-dialog>
     </template>
     <script>
         (function () {
@@ -65,12 +74,19 @@
                 //attributes that the element-container element has
                 properties: {
                     message: String,
+                    format: String,
+                    example: String,
                 },
 
-                factoryImpl: function (element, message) {
+                factoryImpl: function (element, message, format, example) {
                     this.message = message;
+                    this.format = format;
+                    this.example = example;
                     this.$$('#contentSection').appendChild(element);
+                },
 
+                toggleDialog: function () {
+                    this.$.help.open();
                 }
 
             });

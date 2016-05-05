@@ -50,6 +50,13 @@ admin.site.register(models.GenericForm, GenericFormAdmin)
 # admin.site.register(models.GenericOption, GenericOptionAdmin)
 
 
+
+
+class MesaAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(models.Mesa, MesaAdmin)
+
+
 class GenericFormDataAdmin(admin.ModelAdmin):
     pass
 

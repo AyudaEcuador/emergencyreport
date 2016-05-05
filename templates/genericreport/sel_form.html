@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Seleccione su reporte</title>
+
+    <script src="/static/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="/static/elements/elements.html">
+
+</head>
+<body unresolved>
+
+<paper-toolbar>
+  <div class="title">SELECCIONE SU FORMULARIO</div>
+
+</paper-toolbar>
+
+<div class="horizontal layout">
+    <div class="content">
+
+                <paper-menu multi>
+
+        {% for formulario in formularios_list %}
+
+        <paper-button onclick="window.location.href='/mesa/{{mesa_id}}/reporte/{{formulario.id}}'">#{{formulario.ordinal}} - {{ formulario.nombre_corto }} </paper-button> <br>
+
+
+{#        <a href="/mesa/{{mesa_id}}/reporte/{{formulario.id}}">({{formulario.ordinal}}) {{ formulario.nombre_corto }}</a> </br>#}
+
+        {% empty %}
+            <li>No existen formularios habilitados para su usuario.</li>
+
+
+
+        {% endfor %}
+</paper-menu>
+
+
+    </div>
+</div>
+
+</body>
+</html>

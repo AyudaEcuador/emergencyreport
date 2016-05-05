@@ -90,6 +90,9 @@
             <div class="card-content"></div>
             <div id="header">
                 <div>Nombre corto:
+
+                    <!-- <paper-input readonly="true" name="nombre_corto" value="{{ metadata.nombre_corto  }}"> </paper-input> -->
+
                     <span class="cafe-location cafe-light">
                         {{ metadata.nombre_corto }}
                     </span>
@@ -104,7 +107,7 @@
                         {{ metadata.mesa }}
                     </span>
                 </div>
-                <div>Ordinal:
+                <div>Numero de Formulario:
                     <span class="cafe-location cafe-light">
                         {{ metadata.ordinal }}
                     </span>
@@ -128,8 +131,11 @@
         Polymer({
             is: "dynamic-form",
 
+
             listeners: {
-                'iron-form-presubmit': 'setupRequest'
+                'iron-form-presubmit': 'setupRequest',
+                'iron-form-error': 'formError',
+                'iron-form-response':'formResponse'
             },
 
             properties: {
@@ -294,7 +300,7 @@
             getTextInput: function (field) {
                 var fieldType = this.fieldsMappingTypes[field['type']];
                 var text_input = document.createElement(fieldType['widget']);
-                text_input.label = field['verbose_name'];
+                text_input.label = String('#') + String(field['ordinal']) + " " + String(field['verbose_name']);
                 text_input.name = field['verbose_name'];
                 text_input.required = field['required'];
                 text_input.errorMessage = fieldType['defaultError'];
@@ -306,12 +312,16 @@
                 text_input.autoValidate = fieldType['allowedPattern'] != undefined || fieldType['pattern'];
                 text_input.defaultError = fieldType['defaultError'];
                 text_input.patternMessage = fieldType['patternError'];
+
+                //Style
+                text_input.querySelector('input').style.border = '1px solid';
                 return text_input;
             },
 
             getSelectInput: function (field) {
                 var fieldType = this.fieldsMappingTypes[field['type']];
                 var select_input = new selectElement(field['options'], field['verbose_name']);
+                select_input.label = String('#') + String(field['ordinal']) + " " + String(field['verbose_name']);
                 select_input.required = field['required'];
                 select_input.errorMessage = fieldType['defaultError'];
 
@@ -320,10 +330,10 @@
 
             _confirmHandler: function () {
                 if (this.$.reportForm.validate()) {
-                    this.showValue();
+                    //this.showValue();
                     this.$$('#reportForm').submit()
                 } else {
-                    this.showError();
+                    this.showError('No se han cumplido los parametros de ingreso. Revise aquellos campos que se encuentran en rojo.');
                 }
             },
 
@@ -348,8 +358,14 @@
             },
 
             showError: function (string) {
-                this.$.toastResponse.text = this.$.toastResponse.text + 'No es válido el caracter ' + string + 'en el campo incorrecto';
-                this.$.toastResponse.show();
+
+                var modal = new errorDialog(string,"#");
+                var card = document.querySelector('.form-card');
+                card.appendChild(modal);
+
+
+//                this.$.toastResponse.text = this.$.toastResponse.text + 'No es válido el caracter ' + 'XYZ' + 'en el campo incorrecto';
+//                this.$.toastResponse.show();
             },
 
             _checkCharacter: function (event) {
@@ -369,6 +385,18 @@
                 }
 
             },
+
+
+            formError: function () {
+                console.log('nof');
+            },
+            formResponse: function (e){
+                var response = e.detail.response;
+                var modal = new confirmDialog(response.mensaje,response.redirect_url);
+                var card = document.querySelector('.form-card');
+                card.appendChild(modal);
+            },
+
 
             setupRequest: function () {
                 var csrftoken = document.cookie.match('(^|;)\\s*csrftoken\\s*=\\s*([^;]+)');

@@ -1,0 +1,93 @@
+{% load staticfiles %}
+
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="ISO-8859-1">
+    <script src="{% static "bower_components/webcomponentsjs/webcomponents-lite.min.js" %}"></script>
+    <link rel="import" href="{% static "bower_components/polymer/polymer.html" %}">
+    <link rel="import" href="{% static "bower_components/paper-input/paper-input.html" %}">
+    <link rel="import" href="{% static "bower_components/paper-button/paper-button.html" %}">
+    <link rel="import" href="{% static "bower_components/paper-spinner/paper-spinner.html" %}">
+
+<head>
+
+<body>
+
+
+<style is="custom-style">
+    .horizontal-section {
+        min-width: 130px;
+    }
+
+    paper-button {
+        display: block;
+        margin-bottom: 4px;
+    }
+</style>
+
+
+    <script>
+
+function submitForm(me) {
+
+    console.log("submitForm called");
+    console.log(me);
+    me.disabled = true;
+
+
+document.getElementById('progress').active = true;
+
+  document.getElementById('login-form').submit();
+}
+
+
+    </script>
+
+<section id="content-main" onclick="clickHandler(event)">
+
+
+    <div class="divTitle"
+         style="background-color: #009688;text-align: center;width: 30%;margin-left: auto;margin-right: auto">
+        <img src="{% static "logo.png" %}"/>
+    <center><b>EcuReport</b></center>
+
+    </div>
+
+
+    <div style="width: 30%;margin-left: auto;margin-right: auto;background-color: #4fc3f7">
+
+            {% if not user.is_authenticated %}
+
+
+            <paper-button onclick="window.location.href='/login/'">Iniciar Sesion</paper-button> <br>
+
+
+
+            {% else %}
+
+                <div style="background-color: greenyellow;text-align:center"   >Usuario: {{ user.username }}</div>
+
+
+                <paper-button onclick="window.location.href='/mesas/'">Seleccionar Mesa</paper-button> <br>
+                <paper-button onclick="window.location.href='/logout/'">Cerrar Sesion</paper-button> <br>
+
+
+
+
+{#                <div class="submit-row">#}
+{#                    <a href="/logout/">Cerrar sesion</a>#}
+{#                </div>#}
+
+{#                <div class="submit-row">#}
+{#                    <a href="/mesas/">Seleccionar Mesa</a>#}
+{#                </div>#}
+
+            {% endif %}
+
+
+    </div>
+</section>
+
+</body>
+</html>
+
