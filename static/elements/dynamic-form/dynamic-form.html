@@ -332,7 +332,7 @@
                     //this.showValue();
                     this.$$('#reportForm').submit()
                 } else {
-                    this.showError();
+                    this.showError('No se han cumplido los parametros de ingreso. Revise aquellos campos que se encuentran en rojo.');
                 }
             },
 
@@ -357,8 +357,14 @@
             },
 
             showError: function (string) {
-                this.$.toastResponse.text = this.$.toastResponse.text + 'No es válido el caracter ' + 'XYZ' + 'en el campo incorrecto';
-                this.$.toastResponse.show();
+
+                var modal = new confirmDialog(string,"#");
+                var card = document.querySelector('.form-card');
+                card.appendChild(modal);
+
+
+//                this.$.toastResponse.text = this.$.toastResponse.text + 'No es válido el caracter ' + 'XYZ' + 'en el campo incorrecto';
+//                this.$.toastResponse.show();
             },
 
             _checkCharacter: function (event) {
