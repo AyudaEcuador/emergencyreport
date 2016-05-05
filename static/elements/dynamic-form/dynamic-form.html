@@ -159,6 +159,7 @@
                             'TEXTO_SOLO_LETRAS_Y_NUMEROS_CON_ESPACIOS_Y_SIMBOLOS': 'getTextInput',
                             'TEXTO_EMAIL': 'getTextInput',
                             'SELECCIONABLE_TEXTO': 'getSelectInput',
+                            'PUNTO_GEOREFERENCIADO': 'getGeoReferencedInput',
                             'ETIQUETA': 'getLabelInput'
                         }
                     }
@@ -232,6 +233,9 @@
                             'SELECCIONABLE_TEXTO': {
                                 'widget': 'paper-dropdown-menu',
                                 'defaultError': 'Seleccione una opción'
+                            },
+                            'PUNTO_GEOREFERENCIADO': {
+                                'widget': 'geofield-element'
                             }
                         }
                     }
@@ -326,6 +330,15 @@
                 select_input.errorMessage = fieldType['defaultError'];
 
                 return select_input;
+            },
+
+            getGeoReferencedInput: function(field){
+                var fieldType = this.fieldsMappingTypes[field['type']];
+                var geoField = document.createElement(fieldType['widget']);
+                geoField.name = field['verbose_name'];
+
+                return geoField;
+
             },
 
             _confirmHandler: function () {

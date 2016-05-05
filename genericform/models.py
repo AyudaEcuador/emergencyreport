@@ -36,6 +36,7 @@ class GenericField(models.Model):
         (6, 'TEXTO_SOLO_LETRAS_Y_NUMEROS_CON_ESPACIOS'),
         (7, 'TEXTO_SOLO_LETRAS_Y_NUMEROS_CON_ESPACIOS_Y_SIMBOLOS'),
         (8, 'SELECCIONABLE_TEXTO'),
+        (9, 'PUNTO_GEOREFERENCIADO'),
     )
 
     genericform = models.ForeignKey(GenericForm, related_name='fields')

@@ -25,15 +25,23 @@
             is: 'geofield-element',
 
             properties: {
-                latitude: {
-                    type: Number,
-                    notify: true,
+                name: {
+                    type: String,
                     reflectToAttribute: true
                 },
                 longitude: {
                     type: Number,
                     notify: true,
                     reflectToAttribute: true
+                },
+                latitude: {
+                    type: Number,
+                    notify: true,
+                    reflectToAttribute: true
+                },
+                value: {
+                    type: Object,
+                    computed: 'getGeoJSONRepresentation(longitude, latitude)'
                 }
             },
 
@@ -42,6 +50,13 @@
                     this.latitude = position.coords.latitude;
                     this.longitude = position.coords.longitude;
                 }.bind(this));
+            },
+
+            getGeoJSONRepresentation: function (longitude, latitude) {
+                return {
+                    "type": "Point",
+                    "coordinates": [longitude, latitude]
+                };
             }
         });
     </script>
