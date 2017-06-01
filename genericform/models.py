@@ -40,7 +40,7 @@ class GenericField(models.Model):
     )
  
     genericform = models.ForeignKey(GenericForm, related_name='fields')
-    verbose_name = models.CharField(max_length=60)
+    verbose_name = models.CharField(max_length=200)
     ordinal = models.IntegerField()
     type = models.IntegerField(choices=TIPO_CHOICES)
     help_text = models.CharField(max_length=128)
@@ -78,7 +78,7 @@ class GenericParentOption(models.Model):
  
 class GenericOption(models.Model):
     genericparentoption = models.ForeignKey(GenericParentOption, related_name='options')
-    label = models.CharField(max_length=15)
+    label = models.CharField(max_length=50)
     value = models.CharField(max_length=20, help_text='El valor del campo sera convertido')
     ordinal = models.IntegerField(default=0)
     def __unicode__(self):
