@@ -2,21 +2,26 @@
 <dom-module id="element-container">
 
     <style is="custom-style">
+
+        
         .container {
             @apply(--layout-horizontal);
-            border: solid 1px #dedede;
-            border-radius: 5px;
+            border: medium none;
+            border-left: solid 2px #dedede;
+            border-radius: 0;
             margin-bottom: 16px;
-            padding: 6px 16px 20px;
+            padding: 6px 2em 20px ;
+            align-items: flex-end;
         }
+        
 
         .flexchild {
             @apply(--layout-flex);
         }
 
         #helper {
-            margin-top: 3%;
-            margin-right: 10%;
+            margin-top: 0;
+            margin-right: 0;
         }
 
         #helper-button {
@@ -25,7 +30,7 @@
         }
 
         #contentSection {
-            padding-right: 10%;
+            padding-right: 1em;
         }
 
         paper-dialog.help {
@@ -36,6 +41,20 @@
             height: 300px;
             overflow: auto;
         }
+
+        paper-fab {
+            width: 32px;
+            height: 32px;
+            padding: 4px;
+            background: transparent;
+            box-shadow: none;
+            color: #e0e0e0;
+        }
+
+        paper-menu {
+            min-width: 120px;
+        }
+
 
         @media screen and (max-width: 1100px) {
             #contentSection {
