@@ -114,3 +114,8 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = '/var/www/emergencyreport/static/'
+
+try:
+    from emergencyreport.local_settings import DATABASES
+except ImportError:
+    pass

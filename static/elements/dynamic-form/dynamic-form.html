@@ -3,6 +3,7 @@
 <dom-module id="dynamic-form">
     <template>
         <style>
+
             .buttons {
                 padding-left: 36px;
                 float: left;
@@ -85,6 +86,34 @@
                     @apply(--layout-vertical);
                 }
             }
+
+            .paper-fab-0 {
+                width: 16px;
+                height: 16px;
+                background-color: white;
+                box-shadow: none;
+                padding: 16px;
+            }
+
+            .iron-icon-1 {
+                color: #dedede;
+                width: 16px;
+                height: auto;
+            }
+
+            .element-container-0 .container.element-container {
+                padding: 6px 16px 20px;
+                border: 1px solid #dedede;         
+            }
+
+            input {
+                border: medium none;
+            }
+
+            .paper-button-0 {
+                
+            }
+
         </style>
         <paper-card heading="{{ metadata.descripcion }}" class="form-card">
             <div class="card-content"></div>
