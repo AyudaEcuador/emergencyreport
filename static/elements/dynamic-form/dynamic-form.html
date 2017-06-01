@@ -302,16 +302,16 @@
             /*
              generateFormHeaders: function () {
              var fields = this.metadata['headers'];
-             for (var i = 0; i < fields.length; i++) {
-             var field = fields[i];
-             var row = document.createElement('div');
-             row.innerHTML = field['label'] + ': ';
-             var span_text = document.createElement('span');
-             span_text.innerHTML = field['value'];
-             span_text.style.color = "black";
-             row.appendChild(span_text);
-             this.$$('#header').appendChild(row);
-             }
+                 for (var i = 0; i < fields.length; i++) {
+                    var field = fields[i];
+                    var row = document.createElement('div');
+                    row.innerHTML = field['label'] + ': ';
+                    var span_text = document.createElement('span');
+                    span_text.innerHTML = field['value'];
+                    span_text.style.color = "black";
+                    row.appendChild(span_text);
+                    this.$$('#header').appendChild(row);
+                 }
              },*/
 
             generateFormFields: function () {
@@ -404,7 +404,6 @@
                 var modal = new errorDialog(string,"#");
                 var card = document.querySelector('.form-card');
                 card.appendChild(modal);
-
 
 //                this.$.toastResponse.text = this.$.toastResponse.text + 'No es válido el caracter ' + 'XYZ' + 'en el campo incorrecto';
 //                this.$.toastResponse.show();
